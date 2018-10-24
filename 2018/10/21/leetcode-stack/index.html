@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="yh">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="实现一个光线追踪渲染器">
+  <meta property="og:title" content="Leetcode中关于栈的小结（上）">
   <meta property="og:description" content="">
   <meta property="og:site_name" content="樱花飘落之时">
   <meta property="og:type" content="article">
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">实现一个光线追踪渲染器</p>
+          <p class="title">Leetcode中关于栈的小结（上）</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -99,7 +99,7 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2018-10-20</span>
+            <span class="date">2018-10-21</span>
             <span class="time">08:50:59</span>
           </span>
           
@@ -115,15 +115,147 @@
           <div class="post-tags text-muted">
             Tags: 
 
-<a class="tag" href="/tags/计算机图形学-光线追踪/">#计算机图形学 光线追踪</a>
+<a class="tag" href="/tags/Leetcode-栈-算法-JAVA/">#Leetcode 栈 算法 JAVA</a>
 
 
           </div>
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>想用JAVA写一个光线追踪渲染器。</p>
+          <p>这次按标签，从栈专题开始刷起，大概一周做一次总结。</p>
 <a id="more"></a>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th><strong>题名</strong></th>
+<th>题解</th>
+<th><strong>通过率</strong></th>
+<th><strong>难度</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>232</td>
+<td><a href="https://leetcode-cn.com/problems/implement-queue-using-stacks" target="_blank" rel="noopener">用栈实现队列</a></td>
+<td></td>
+<td>54.8%</td>
+<td>简单</td>
+</tr>
+<tr>
+<td>496</td>
+<td><a href="https://leetcode-cn.com/problems/next-greater-element-i" target="_blank" rel="noopener">下一个更大元素 I</a></td>
+<td></td>
+<td>54.7%</td>
+<td>简单</td>
+</tr>
+<tr>
+<td>682</td>
+<td><a href="https://leetcode-cn.com/problems/baseball-game" target="_blank" rel="noopener">棒球比赛</a></td>
+<td></td>
+<td>53.1%</td>
+<td>简单</td>
+</tr>
+<tr>
+<td>225</td>
+<td><a href="https://leetcode-cn.com/problems/implement-stack-using-queues" target="_blank" rel="noopener">用队列实现栈</a></td>
+<td></td>
+<td>49.1%</td>
+<td>简单</td>
+</tr>
+<tr>
+<td>155</td>
+<td><a href="https://leetcode-cn.com/problems/min-stack" target="_blank" rel="noopener">最小栈</a></td>
+<td></td>
+<td>45.0%</td>
+<td>简单</td>
+</tr>
+<tr>
+<td>844</td>
+<td><a href="https://leetcode-cn.com/problems/backspace-string-compare" target="_blank" rel="noopener">比较含退格的字符串</a></td>
+<td></td>
+<td>42.5%</td>
+<td>简单</td>
+</tr>
+<tr>
+<td>20</td>
+<td><a href="https://leetcode-cn.com/problems/valid-parentheses" target="_blank" rel="noopener">有效的括号</a></td>
+<td></td>
+<td>33.0%</td>
+<td>简单</td>
+</tr>
+<tr>
+<td>94</td>
+<td><a href="https://leetcode-cn.com/problems/binary-tree-inorder-traversal" target="_blank" rel="noopener">二叉树的中序遍历</a></td>
+<td></td>
+<td>61.5%</td>
+<td>中等</td>
+</tr>
+<tr>
+<td>144</td>
+<td><a href="https://leetcode-cn.com/problems/binary-tree-preorder-traversal" target="_blank" rel="noopener">二叉树的前序遍历</a></td>
+<td></td>
+<td>52.6%</td>
+<td>中等</td>
+</tr>
+<tr>
+<td>341</td>
+<td><a href="https://leetcode-cn.com/problems/flatten-nested-list-iterator" target="_blank" rel="noopener">扁平化嵌套列表迭代器</a></td>
+<td></td>
+<td>50.8%</td>
+<td>中等</td>
+</tr>
+<tr>
+<td>173</td>
+<td><a href="https://leetcode-cn.com/problems/binary-search-tree-iterator" target="_blank" rel="noopener">二叉搜索树迭代器</a></td>
+<td></td>
+<td>49.7%</td>
+<td>中等</td>
+</tr>
+<tr>
+<td>739</td>
+<td><a href="https://leetcode-cn.com/problems/daily-temperatures" target="_blank" rel="noopener">每日温度</a></td>
+<td></td>
+<td>48.3%</td>
+<td>中等</td>
+</tr>
+<tr>
+<td>856</td>
+<td><a href="https://leetcode-cn.com/problems/score-of-parentheses" target="_blank" rel="noopener">括号的分数</a></td>
+<td></td>
+<td>44.7%</td>
+<td>中等</td>
+</tr>
+<tr>
+<td>103</td>
+<td><a href="https://leetcode-cn.com/problems/binary-tree-zigzag-level-order-traversal" target="_blank" rel="noopener">二叉树的锯齿形层次遍历</a></td>
+<td></td>
+<td>42.9%</td>
+<td>中等</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="https://leetcode-cn.com/problems/next-greater-element-ii" target="_blank" rel="noopener">下一个更大元素 II</a></td>
+<td></td>
+<td>40.7%</td>
+<td>中等</td>
+</tr>
+<tr>
+<td>150</td>
+<td><a href="https://leetcode-cn.com/problems/evaluate-reverse-polish-notation" target="_blank" rel="noopener">逆波兰表达式求值</a></td>
+<td></td>
+<td>39.1%</td>
+<td>中等</td>
+</tr>
+<tr>
+<td>331</td>
+<td><a href="https://leetcode-cn.com/problems/verify-preorder-serialization-of-a-binary-tree" target="_blank" rel="noopener">验证二叉树的前序序列化</a></td>
+<td></td>
+<td>38.8%</td>
+<td>中等</td>
+</tr>
+</tbody>
+</table>
 
         </div>
       </div>
