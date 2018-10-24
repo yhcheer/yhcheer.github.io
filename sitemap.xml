@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yhcheer.com/2018/10/20/ray-tarcing/</loc>
+    
+    <lastmod>2018-10-24T00:39:12.004Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yhcheer.com/2018/10/23/hadoop-from-zero/</loc>
     
     <lastmod>2018-10-23T18:22:03.482Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://yhcheer.com/2018/10/20/hello-world/</loc>
     
     <lastmod>2018-10-23T17:37:41.162Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yhcheer.com/2018/10/20/ray-tarcing/</loc>
-    
-    <lastmod>2018-10-23T17:37:39.983Z</lastmod>
     
   </url>
   
