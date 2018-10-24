@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="yh">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="用阿里云搭建Hadoop集群">
+  <meta property="og:description" content="">
+  <meta property="og:site_name" content="樱花飘落之时">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yhcheer.com">
+  
+    <link rel="alternate" href="/atom.xml" title="樱花飘落之时" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>樱花飘落之时</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">用阿里云搭建Hadoop集群</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/yhcheer">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:yhcheer@zju.edu.cn">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By yh</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2018-10-23</span>
+            <span class="time">08:38:01</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/大数据/">大数据</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/大数据-Hadoop-JAVA/">#大数据 Hadoop JAVA</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>《大数据存储》课程好像过半了，才开始搭环境，hadoop的环境搭建算是比较繁琐的。这次用了3台阿里云ECS服务器（学生机）来完成这次的环境搭建。由于是三个不同的账号（每个账号的学生优惠只能有一个实例），所以走的是外网IP通道，和网上大部分教程有一定的区别。</p>
+<a id="more"></a>
+<h2 id="一、HADOOP集群搭建"><a href="#一、HADOOP集群搭建" class="headerlink" title="一、HADOOP集群搭建"></a>一、HADOOP集群搭建</h2><h3 id="1-服务器准备"><a href="#1-服务器准备" class="headerlink" title="1 服务器准备"></a>1 服务器准备</h3><p>阿里云ESC服务器 1 vCPU 2 GB (I/O优化) ecs.n4.small 1Mbps </p>
+<p>默认系统选的Centos 7.4 64bit</p>
+<p>阿里云已经导入学信网系统，学生优惠9.5/月，你值得拥有</p>
+<h3 id="2-网络环境准备"><a href="#2-网络环境准备" class="headerlink" title="2 网络环境准备"></a>2 网络环境准备</h3><p>阿里云自动分配公网IP和私网IP，记住即可</p>
+<p>阿里云的安全组设置默认只开启22端口用于SSH，以及3389端口用于远程登录</p>
+<p>对于搭hadoop集群的我们肯定是不够的，如果你不太了解hadoop的端口配置，就到阿里云控制台上在你的实例的安全组上，添加如下一步到位的规则：</p>
+<p>规则方向-出方向和入方向，协议类型-全部，授权类型-地址段访问，授权对象-0.0.0.0/0</p>
+<p>当然这样是很不安全的，但对于新手来说，省了很多麻烦，建议后期手动修改安全组设置。</p>
+<h3 id="3-服务器系统设置"><a href="#3-服务器系统设置" class="headerlink" title="3 服务器系统设置"></a>3 服务器系统设置</h3><p>3.1 添加HADOOP用户</p>
+<p><del>不添加。</del>我是用root用户来搭建。</p>
+<p><strong>PS. 我第一次搭的时候，使用的是HADOOP用户，但尝试了各种方法，都无法成功在HADOOP用户下进行ssh免密，导致最后跑集群的时候出错。</strong></p>
+<p>3.2 分配root权限</p>
+<p><del>root用户无需再分配</del></p>
+<p>3.3 同步时间</p>
+<p><del>阿里云无需同步时间</del></p>
+<p>3.4 设置主机名（重要）</p>
+<p><code>sudo nano /etc/hostname</code></p>
+<p>我习惯用nano，没有的话装一下<code>yum install nano</code></p>
+<p>如果是自己的主机的话直接在“阿里云实例设置-修改信息-重启实例”也能改。</p>
+<p>三台机器主机名分别设y为：</p>
+<ul>
+<li>hdp-node-01</li>
+<li>hdp-node-02</li>
+<li>hdp-node-03</li>
+</ul>
+<p>3.5 域名映射（重要）</p>
+<p>将一些常用的网址域名与其对应的IP地址建立一个关联“数据库”</p>
+<p><code>sudo nano /etc/hosts</code></p>
+<p>在<strong>文件最下方</strong>添加如下信息，我这里用外网IP。如果是在同一个账号下的三个实例，可以选择走内网IP通道，速度上应该会快很多。</p>
+<ul>
+<li>本机<strong>内网IP</strong> hdp-node-01</li>
+<li>从机外网IP hdp-node-02</li>
+<li>从机外网IP hdp-node-03</li>
+</ul>
+<p><strong>PS. 这里一开始我用的都是外网IP，最后报错，原因大概是阿里云的外网IP冲突问题，因此改为内网IP。注意只有主机的hosts配置的第一个节点（本机）是内网IP，并且另外几台从机的hosts配置都是使用外网IP不用改变。</strong></p>
+<p>3.6 配置ssh免密登录（重要）</p>
+<p><code>ssh-keygen</code>利用ssh-keygen生成密钥</p>
+<p><code>cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code>加入到授权，可以免密ssh自己</p>
+<p>把密匙公钥发送给别的节点，已达到免密的效果，发送时要输入对面节点的密码</p>
+<p><code>scp ~/.ssh/id_rsa.pub root@hdp-node-02:~/.ssh</code>将id_rsa.pub拷贝到hdp-node-02节点上</p>
+<p><code>scp ~/.ssh/id_rsa.pub root@hdp-node-03:~/.ssh</code>将id_rsa.pub拷贝到hdp-node-03节点上</p>
+<p><strong>换到hdp-node-02和hdp-node-03上操作：</strong></p>
+<p><code>cat ~/.ssh/id_rsa.pub &gt;&gt;~/.ssh/authorized_keys</code>把刚才的密匙加入到授权</p>
+<p><strong>回到hdp-node-01上操作：</strong></p>
+<p>测试<code>ssh hdp-node-02</code>成功！如果还需要输入密码则免密失败。</p>
+<p><code>logout</code>退出刚才的ssh</p>
+<p><strong>PS. 后来调试bug的时候，我把所有节点相互之间的ssh免密也实现了，理论上应该只需要主机ssh所有从机即可。</strong></p>
+<p>3.7 配置防火墙</p>
+<p><code>systemctl stop firewalld</code>关闭centos7防火墙</p>
+<h3 id="4-JDK环境安装"><a href="#4-JDK环境安装" class="headerlink" title="4 JDK环境安装"></a>4 JDK环境安装</h3><p>JDK是HADOOP的必要环境</p>
+<p>下载jdk1.8，可以用wget方法，我就用FileZilla传上去再解压好了</p>
+<p>放到/usr文件夹下，解压</p>
+<p><code>tar -zxf jdk-8u191-linux-x64.tar.gz</code></p>
+<p>重命名一下文件夹名字为java（非必须）</p>
+<p><code>mv jdk1.8.0_191 java</code></p>
+<p>配置环境变量<code>nano /etc/profile</code>，在<strong>文件最下方</strong>添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/java</span><br><span class="line">export PATH=$JAVA_HOME/bin:$PATH</span><br></pre></td></tr></table></figure>
+<p>生效环境<code>source /etc/profile</code></p>
+<p>测试<code>java -version</code>，成功则显示版本号</p>
+<p>重复以上步骤在每个从机上执行</p>
+<h3 id="5-hadoop安装和部署"><a href="#5-hadoop安装和部署" class="headerlink" title="5 hadoop安装和部署"></a>5 hadoop安装和部署</h3><p>下载、解压。同上。</p>
+<p>重命名一下（非必须）</p>
+<p><code>mv hadoop2.7.7 hadoop</code></p>
+<p><strong>PS. 我这里使用的是hadoop 2.7.7版本，注意hadoop 3与hadoop 2的改动比较大，包括端口、命令、以及一些配置等，注意区别。</strong></p>
+<p>配置环境变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/java</span><br><span class="line">export PATH=PATH:JAVA_HOME/bin</span><br><span class="line">export HADOOP_HOME=/usr/hadoop</span><br><span class="line">export PATH=PATH:HADOOP_HOME/bin:$HADOOP_HOME/sbin</span><br></pre></td></tr></table></figure>
+<p>生效环境<code>source /etc/profile</code></p>
+<p>测试<code>hadoop version</code>显示版本号，则成功</p>
+<h3 id="6-开始部署hadoop"><a href="#6-开始部署hadoop" class="headerlink" title="6 开始部署hadoop"></a>6 开始部署hadoop</h3><p>进入hadoop安装目录下的<strong>子目录</strong>/etc/hadoop</p>
+<p><code>cd /usr/hadoop/etc/hadoop</code></p>
+<ul>
+<li>配置JAVA路径</li>
+</ul>
+<p><code>nano hadoop-env.sh</code>找到下面写有JAVA_HOME的地方，修改JAVA路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># The java implementation to use.</span><br><span class="line">export JAVA_HOME=/usr/java</span><br></pre></td></tr></table></figure>
+<ul>
+<li>配置core-site.xml</li>
+</ul>
+<p>集群全局参数，用于定义系统级别的参数，如HDFS  URL、Hadoop的临时目录等</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.defaultFS<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://hdp-node-01:9000<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>hadoop.tmp.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>/opt/hadoop<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>参数名</th>
+<th>默认值</th>
+<th>参数解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>fs.defaultFS</td>
+<td>file:///</td>
+<td>文件系统主机和端口</td>
+</tr>
+<tr>
+<td>2</td>
+<td>io.file.buffer.size</td>
+<td>4096</td>
+<td>流文件的缓冲区大小</td>
+</tr>
+<tr>
+<td>3</td>
+<td>hadoop.tmp.dir</td>
+<td>/tmp/hadoop-${user.name}</td>
+<td>临时文件夹</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>配置hdfs-site.xml</li>
+</ul>
+<p>HDFS参数，如名称节点和数据节点的存放位置、文件副本的个数、文件读取权限等</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.secondary.http-address<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">value</span>&gt;</span>hdp-node-02:50090<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.secondary.https-address<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">value</span>&gt;</span>hdp-node-02:50091<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.name.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">value</span>&gt;</span>/opt/hadoop/dfs/name<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.datanode.data.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">value</span>&gt;</span>/opt/hadoop/dfs/data<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">value</span>&gt;</span>2<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>参数名</th>
+<th>默认值</th>
+<th>参数解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>dfs.namenode.secondary.http-address</td>
+<td>0.0.0.0:50090</td>
+<td>定义HDFS对应的HTTP服务器地址和端口</td>
+</tr>
+<tr>
+<td>2</td>
+<td>dfs.namenode.name.dir</td>
+<td>file://${hadoop.tmp.dir}/dfs/name</td>
+<td>定义DFS的名称节点在本地文件系统的位置</td>
+</tr>
+<tr>
+<td>3</td>
+<td>dfs.datanode.data.dir</td>
+<td>file://${hadoop.tmp.dir}/dfs/data</td>
+<td>定义DFS数据节点存储数据块时存储在本地文件系统的位置</td>
+</tr>
+<tr>
+<td>4</td>
+<td>dfs.replication</td>
+<td>3</td>
+<td>缺省的块复制数量</td>
+</tr>
+<tr>
+<td>5</td>
+<td>dfs.webhdfs.enabled</td>
+<td>true</td>
+<td>是否通过http协议读取hdfs文件，如果选是，则集群安全性较差</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>配置mapred-site.xml</li>
+</ul>
+<p>Mapreduce参数，包括JobHistory Server和应用程序参数两部分，如reduce任务的默认个数、任务所能够使用内存的默认上下限等</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.framework.name<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>yarn<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>参数名</th>
+<th>默认值</th>
+<th>参数解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>mapreduce.framework.name</td>
+<td>local</td>
+<td>取值local、classic或yarn其中之一，如果不是yarn，则不会使用YARN集群来实现资源的分配</td>
+</tr>
+<tr>
+<td>2</td>
+<td>mapreduce.jobhistory.address</td>
+<td>0.0.0.0:10020</td>
+<td>定义历史服务器的地址和端口，通过历史服务器查看已经运行完的Mapreduce作业记录</td>
+</tr>
+<tr>
+<td>3</td>
+<td>mapreduce.jobhistory.webapp.address</td>
+<td>0.0.0.0:19888</td>
+<td>定义历史服务器web应用访问的地址和端口</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>配置yarn-site.xml</li>
+</ul>
+<p>集群资源管理系统参数，配置 ResourceManager，NodeManager 的通信端口，web监控端口等</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- RM的hostname --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--指定Yarn的老大(ResourceManager)的地址--&gt;</span>  </span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.resourcemanager.hostname<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>hdp-node-01<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span> </span><br><span class="line">	<span class="comment">&lt;!-- NodeManager上运行的附属服务。需配置成mapreduce_shuffle，才可运行MapReduce程序 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.nodemanager.aux-services<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>mapreduce_shuffle<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>参数名</th>
+<th>默认值</th>
+<th>参数解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>yarn.resourcemanager.address</td>
+<td>0.0.0.0:8032</td>
+<td>ResourceManager 提供给客户端访问的地址。客户端通过该地址向RM提交应用程序，杀死应用程序等</td>
+</tr>
+<tr>
+<td>2</td>
+<td>yarn.resourcemanager.scheduler.address</td>
+<td>0.0.0.0:8030</td>
+<td>ResourceManager提供给ApplicationMaster的访问地址。ApplicationMaster通过该地址向RM申请资源、释放资源等</td>
+</tr>
+<tr>
+<td>3</td>
+<td>yarn.resourcemanager.resource-tracker.address</td>
+<td>0.0.0.0:8031</td>
+<td>ResourceManager 提供给NodeManager的地址。NodeManager通过该地址向RM汇报心跳，领取任务等</td>
+</tr>
+<tr>
+<td>4</td>
+<td>yarn.resourcemanager.admin.address</td>
+<td>0.0.0.0:8033</td>
+<td>ResourceManager 提供给管理员的访问地址。管理员通过该地址向RM发送管理命令等。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>yarn.resourcemanager.webapp.address</td>
+<td>0.0.0.0:8088</td>
+<td>ResourceManager对web 服务提供地址。用户可通过该地址在浏览器中查看集群各类信息</td>
+</tr>
+<tr>
+<td>6</td>
+<td>yarn.nodemanager.aux-services</td>
+<td></td>
+<td>通过该配置项，用户可以自定义一些服务，例如Map-Reduce的shuffle功能就是采用这种方式实现的，这样就可以在NodeManager上扩展自己的服务。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>配置slaves</li>
+</ul>
+<p><code>nano slaves</code></p>
+<p>hdp-node-02<br>hdp-node-03</p>
+<ul>
+<li>配置masters</li>
+</ul>
+<p><code>nano masters</code></p>
+<p>hdp-node-01</p>
+<p><strong>PS. 其实可以在一台机子上安装和配置好，然后用scp命令直接复制整个文件夹给从机。但阿里云外网IP间传输实在是太慢了！</strong></p>
+<h3 id="7-启动集群"><a href="#7-启动集群" class="headerlink" title="7 启动集群"></a>7 启动集群</h3><ul>
+<li>初始化HDFS</li>
+</ul>
+<p><code>hdfs namenode -format</code></p>
+<ul>
+<li>启动HDFS以及YARN</li>
+</ul>
+<p><code>bash start-all.sh</code></p>
+<p>集群启动完毕。在浏览器上可观察启动状况</p>
+<p>输入<code>主机IP:50070</code>，查看大体配置情况。主要注意存活节点数，我这里是2个slaves。</p>
+<p><img src="http://ph25hhyzh.bkt.clouddn.com/1540315053705.png" alt="1540315053705"></p>
+<p>输入<code>主机IP:8088</code>，可查看当前运行情况。这里我在跑一个wordcount的demo，可看到进度情况。</p>
+<p><img src="http://ph25hhyzh.bkt.clouddn.com/1540314812172.png" alt="1540314812172"></p>
+<ul>
+<li>建立input目录</li>
+</ul>
+<p><code>hadoop fs -mkdir -p /wordcount/input</code></p>
+<ul>
+<li>放入文件到该目录下</li>
+</ul>
+<p><code>hadoop fs -put /usr/hello.txt /wordcount/input</code></p>
+<ul>
+<li>跑demo</li>
+</ul>
+<p><code>cd ./share/hadoop/mapreduce/</code></p>
+<p><code>hadoop jar hadoop-mapreduce-examples-2.7.7.jar wordcount /wordcount/input/hello.txt output2</code></p>
+<p>在控制台中可看到，表示运行成功：</p>
+<p><img src="http://ph25hhyzh.bkt.clouddn.com/1540315291480.png" alt="1540315291480"></p>
+<p>我的hello.txt的内容是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Hello World Bye World</span><br><span class="line">Hello World Bye World</span><br><span class="line">Hello World Bye World</span><br><span class="line">Hello World Bye World</span><br><span class="line">Hello World Bye World</span><br></pre></td></tr></table></figure>
+<p>取出wordcount统计结果：</p>
+<p><img src="http://ph25hhyzh.bkt.clouddn.com/1540315844610.png" alt="1540315844610"></p>
+<p>这就是Hadoop世界的HelloWorld代码，我们环境搭建也随之完成。</p>
+<p>参考：</p>
+<p>阿里云内网IP搭建：<a href="https://blog.csdn.net/bqw18744018044/article/details/79103931" target="_blank" rel="noopener">https://blog.csdn.net/bqw18744018044/article/details/79103931</a></p>
+<p>阿里云内网IP搭建：<a href="https://blog.csdn.net/QianZhaoVic/article/details/83150703" target="_blank" rel="noopener">https://blog.csdn.net/QianZhaoVic/article/details/83150703</a></p>
+<p>hadoop参数：<a href="https://blog.csdn.net/lydia88/article/details/79449656" target="_blank" rel="noopener">https://blog.csdn.net/lydia88/article/details/79449656</a></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        </p><p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
