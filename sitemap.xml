@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yhcheer.com/2018/10/30/hadoop-other-env/</loc>
+    <loc>http://yhcheer.com/2018/11/01/hadoop-mapreduce/</loc>
     
-    <lastmod>2018-10-31T02:51:47.082Z</lastmod>
+    <lastmod>2018-11-01T10:52:52.415Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yhcheer.com/2018/10/23/hadoop-from-zero/</loc>
     
-    <lastmod>2018-10-31T02:38:36.018Z</lastmod>
+    <lastmod>2018-10-31T07:04:09.401Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yhcheer.com/2018/10/30/hadoop-other-env/</loc>
+    
+    <lastmod>2018-10-31T06:40:17.245Z</lastmod>
     
   </url>
   

@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2018-10-23</span>
-            <span class="time">10:52:50</span>
+            <span class="time">18:53:37</span>
           </span>
           
           <!--  Categories  -->
@@ -115,7 +115,7 @@
           <div class="post-tags text-muted">
             Tags: 
 
-<a class="tag" href="/tags/Hadoop/">#Hadoop</a> <a class="tag" href="/tags/大数据/">#大数据</a>
+<a class="tag" href="/tags/大数据/">#大数据</a> <a class="tag" href="/tags/Hadoop/">#Hadoop</a>
 
 
           </div>
@@ -190,7 +190,7 @@
 <p><code>mv hadoop2.7.7 hadoop</code></p>
 <p><strong>PS. 我这里使用的是hadoop 2.7.7版本，注意hadoop 3与hadoop 2的改动比较大，包括端口、命令、以及一些配置等，注意区别。</strong></p>
 <p>配置环境变量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/java</span><br><span class="line">export PATH=PATH:JAVA_HOME/bin</span><br><span class="line">export HADOOP_HOME=/usr/hadoop</span><br><span class="line">export PATH=PATH:HADOOP_HOME/bin:$HADOOP_HOME/sbin</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/java</span><br><span class="line">export PATH=PATH:$JAVA_HOME/bin</span><br><span class="line">export HADOOP_HOME=/usr/hadoop</span><br><span class="line">export PATH=PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin</span><br></pre></td></tr></table></figure>
 <p>生效环境<code>source /etc/profile</code></p>
 <p>测试<code>hadoop version</code>显示版本号，则成功</p>
 <h3 id="6-开始部署hadoop"><a href="#6-开始部署hadoop" class="headerlink" title="6 开始部署hadoop"></a>6 开始部署hadoop</h3><p>进入hadoop安装目录下的<strong>子目录</strong>/etc/hadoop</p>
