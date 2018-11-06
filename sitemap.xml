@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yhcheer.com/2018/10/20/ray-tarcing/</loc>
+    
+    <lastmod>2018-11-06T16:59:33.368Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yhcheer.com/2018/11/02/effective-java-01/</loc>
+    
+    <lastmod>2018-11-03T16:05:21.784Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yhcheer.com/2018/10/21/leetcode-stack/</loc>
+    
+    <lastmod>2018-11-02T13:17:25.531Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yhcheer.com/2018/11/01/hadoop-mapreduce/</loc>
     
-    <lastmod>2018-11-01T10:52:52.415Z</lastmod>
+    <lastmod>2018-11-02T13:17:18.810Z</lastmod>
     
   </url>
   
@@ -19,20 +40,6 @@
     <loc>http://yhcheer.com/2018/10/30/hadoop-other-env/</loc>
     
     <lastmod>2018-10-31T06:40:17.245Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yhcheer.com/2018/10/20/ray-tarcing/</loc>
-    
-    <lastmod>2018-10-24T09:47:39.716Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yhcheer.com/2018/10/21/leetcode-stack/</loc>
-    
-    <lastmod>2018-10-24T00:57:01.016Z</lastmod>
     
   </url>
   
