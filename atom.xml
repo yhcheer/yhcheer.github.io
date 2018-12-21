@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yhcheer.com/"/>
-  <updated>2018-12-21T07:45:07.615Z</updated>
+  <updated>2018-12-21T07:46:40.252Z</updated>
   <id>http://yhcheer.com/</id>
   
   <author>
@@ -21,14 +21,13 @@
     <link href="http://yhcheer.com/2018/12/21/graph-note/"/>
     <id>http://yhcheer.com/2018/12/21/graph-note/</id>
     <published>2018-12-21T07:30:00.000Z</published>
-    <updated>2018-12-21T07:45:07.615Z</updated>
+    <updated>2018-12-21T07:46:40.252Z</updated>
     
-    <content type="html"><![CDATA[<p>清华大学《计算机图形学基础》课程</p><p>由清华大学胡事民教授的<strong>《计算机图形学基础》</strong>课程教案中，个人提取出的一些<strong>学习笔记</strong>。<strong>主要内容</strong>包括：图形学简介、颜色模型、图像基本知识、Phong光照模型、视图模型变换、材质反射属性模型BRDF、光线跟踪、Bezier曲线曲面、B样条曲线曲面、网格、光线跟踪加速算法、纹理、阴影生成等。</p><a id="more"></a><h2 id="第一讲-图形学简介"><a href="#第一讲-图形学简介" class="headerlink" title="第一讲 图形学简介"></a>第一讲 图形学简介</h2><ul><li>什么是计算机图形学？</li></ul><p>Computer Graphics is a subject to investigate graphics representation, generation, processing and display by using Computers.</p><ul><li>计算机图形学的历史</li></ul><p>In 1962, MIT’s Lincoln Lab, Ivan Sutherland’s PhD Thesis  Sketchpad: A Man-Machined Graphical Communication System</p><ul><li>CAD的历史</li></ul><p>Professor Coons, the concept of “CAD” (Computer Aided Design) in 1958, Coons surface in 1964, Coons Award</p><p>In 1950, the first visual display  unit is designed for MIT’s Whirlwind I Computer</p>]]></content>
+    <content type="html"><![CDATA[<p>由清华大学胡事民教授的<strong>《计算机图形学基础》</strong>课程教案中，个人提取出的一些<strong>学习笔记</strong>。<strong>主要内容</strong>包括：图形学简介、颜色模型、图像基本知识、Phong光照模型、视图模型变换、材质反射属性模型BRDF、光线跟踪、Bezier曲线曲面、B样条曲线曲面、网格、光线跟踪加速算法、纹理、阴影生成等。</p><a id="more"></a><h2 id="第一讲-图形学简介"><a href="#第一讲-图形学简介" class="headerlink" title="第一讲 图形学简介"></a>第一讲 图形学简介</h2><ul><li>什么是计算机图形学？</li></ul><p>Computer Graphics is a subject to investigate graphics representation, generation, processing and display by using Computers.</p><ul><li>计算机图形学的历史</li></ul><p>In 1962, MIT’s Lincoln Lab, Ivan Sutherland’s PhD Thesis  Sketchpad: A Man-Machined Graphical Communication System</p><ul><li>CAD的历史</li></ul><p>Professor Coons, the concept of “CAD” (Computer Aided Design) in 1958, Coons surface in 1964, Coons Award</p><p>In 1950, the first visual display  unit is designed for MIT’s Whirlwind I Computer</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;清华大学《计算机图形学基础》课程&lt;/p&gt;
-&lt;p&gt;由清华大学胡事民教授的&lt;strong&gt;《计算机图形学基础》&lt;/strong&gt;课程教案中，个人提取出的一些&lt;strong&gt;学习笔记&lt;/strong&gt;。&lt;strong&gt;主要内容&lt;/strong&gt;包括：图形学简介、颜色模型、图像基本知识、Phong光照模型、视图模型变换、材质反射属性模型BRDF、光线跟踪、Bezier曲线曲面、B样条曲线曲面、网格、光线跟踪加速算法、纹理、阴影生成等。&lt;/p&gt;
+      &lt;p&gt;由清华大学胡事民教授的&lt;strong&gt;《计算机图形学基础》&lt;/strong&gt;课程教案中，个人提取出的一些&lt;strong&gt;学习笔记&lt;/strong&gt;。&lt;strong&gt;主要内容&lt;/strong&gt;包括：图形学简介、颜色模型、图像基本知识、Phong光照模型、视图模型变换、材质反射属性模型BRDF、光线跟踪、Bezier曲线曲面、B样条曲线曲面、网格、光线跟踪加速算法、纹理、阴影生成等。&lt;/p&gt;
     
     </summary>
     
@@ -143,9 +142,9 @@
       <category term="图形学" scheme="http://yhcheer.com/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
     
     
-      <category term="Java" scheme="http://yhcheer.com/tags/Java/"/>
-    
       <category term="计算机图形学" scheme="http://yhcheer.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+      <category term="Java" scheme="http://yhcheer.com/tags/Java/"/>
     
       <category term="光线追踪" scheme="http://yhcheer.com/tags/%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/"/>
     
