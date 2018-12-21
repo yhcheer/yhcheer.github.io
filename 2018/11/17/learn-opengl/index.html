@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="yh">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="学习OpenGL道路上的所见所闻">
+  <meta property="og:description" content="">
+  <meta property="og:site_name" content="樱花飘落之时">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yhcheer.com">
+  
+    <link rel="alternate" href="/atom.xml" title="樱花飘落之时" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>樱花飘落之时</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">学习OpenGL道路上的所见所闻</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/yhcheer">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:yhcheer@zju.edu.cn">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By yh</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2018-11-17</span>
+            <span class="time">15:33:50</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/图形学/">图形学</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/计算机图形学/">#计算机图形学</a> <a class="tag" href="/tags/OpenGL/">#OpenGL</a> <a class="tag" href="/tags/C/">#C++</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>所见即所闻。</p>
+<a id="more"></a>
+<h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><p>修改三个位置C++常规、链接器常规、输入</p>
+<p>C/C++-常规-附加包含目录</p>
+<p>C:\Develop\OpenGL\glew-2.1.0-win32\glew-2.1.0\include</p>
+<p>C:\Develop\OpenGL\glfw-3.2.1.bin.WIN32\glfw-3.2.1.bin.WIN32\include</p>
+<p>C:\Develop\OpenGL\glm-0.9.8.5\glm</p>
+<p>glm只有头文件，没有库</p>
+<p>链接器-常规-附加库目录</p>
+<p>C:\Develop\OpenGL\glew-2.1.0-win32\glew-2.1.0\lib\Release\Win32</p>
+<p>C:\Develop\OpenGL\glfw-3.2.1.bin.WIN32\glfw-3.2.1.bin.WIN32\lib-vc2015</p>
+<p>链接器-输入-附加依赖项</p>
+<p>opengl32.lib<br>glfw3.lib<br>glew32s.lib</p>
+<h2 id="1-Hello-Window"><a href="#1-Hello-Window" class="headerlink" title="1. Hello Window"></a>1. Hello Window</h2><ul>
+<li>新建窗口，更改成自己非常喜欢的底色(0.9, 0.9, 0.98)</li>
+</ul>
+<p><img src="C:\Users\yh\Pictures\1.png" alt=""></p>
+<h2 id="2-Hello-Triangle"><a href="#2-Hello-Triangle" class="headerlink" title="2. Hello Triangle"></a>2. Hello Triangle</h2><ul>
+<li>画出第一个三角形</li>
+</ul>
+<p><img src="C:\Users\yh\Pictures\2.png" alt=""></p>
+<ul>
+<li>画出两个三角形 合成的四边形</li>
+</ul>
+<p><img src="C:\Users\yh\Pictures\3.png" alt=""></p>
+<ul>
+<li>框线模式</li>
+</ul>
+<p><img src="C:\Users\yh\Pictures\4.png" alt=""></p>
+<ul>
+<li>opengl流程</li>
+</ul>
+<p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542447163022.png" alt="1542447163022"></p>
+<ul>
+<li>VAO&amp;VBO&amp;EBO</li>
+</ul>
+<p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542449853303.png" alt="1542449853303"></p>
+<ul>
+<li>官方文档VAO&amp;VBO&amp;EBO</li>
+</ul>
+<p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542450985371.png" alt="1542450985371"></p>
+<h2 id="3-Hello-Shaders"><a href="#3-Hello-Shaders" class="headerlink" title="3. Hello Shaders"></a>3. Hello Shaders</h2><ul>
+<li>shaders的输入与输出</li>
+</ul>
+<p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542453603179.png" alt="1542453603179"></p>
+<ul>
+<li>写第一个shader，颜色设为暗红色</li>
+</ul>
+<p><img src="C:\Users\yh\Pictures\5.png" alt=""></p>
+<ul>
+<li>Uniform的应用，图形背景为会呼吸渐变的绿色</li>
+</ul>
+<p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542460859488.png" alt="1542460859488"></p>
+<ul>
+<li>VBO内存内部数据，添加顶点颜色数据</li>
+</ul>
+<p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542462561030.png" alt="1542462561030"></p>
+<ul>
+<li>设置顶点颜色，opengl自动完成插值</li>
+</ul>
+<p><img src="C:\Users\yh\Pictures\7.png" alt=""></p>
+<ul>
+<li>读取文件的操作示意图</li>
+</ul>
+<p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542471264896.png" alt="1542471264896"></p>
+<h2 id="4-Hello-Texture"><a href="#4-Hello-Texture" class="headerlink" title="4. Hello Texture"></a>4. Hello Texture</h2><ul>
+<li>导入纹理</li>
+</ul>
+<p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542521791170.png" alt="1542521791170"></p>
+<ul>
+<li>纹理*顶点颜色</li>
+</ul>
+<p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542521654452.png" alt="1542521654452"></p>
+<ul>
+<li>纹理滑动通道槽</li>
+</ul>
+<p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542523870101.png" alt="1542523870101"></p>
+<ul>
+<li>两个纹理合并</li>
+</ul>
+<p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542536644772.png" alt="1542536644772"></p>
+<h2 id="5-Transform"><a href="#5-Transform" class="headerlink" title="5. Transform"></a>5. Transform</h2><ul>
+<li><p>旋转90度，并缩放0.5倍</p>
+<p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542538546792.png" alt="1542538546792"></p>
+</li>
+</ul>
+<h3 id="6-Coordinate-System"><a href="#6-Coordinate-System" class="headerlink" title="6. Coordinate System"></a>6. Coordinate System</h3><ul>
+<li><p>MVC坐标</p>
+<p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542546003428.png" alt="1542546003428"></p>
+</li>
+<li><p>MVC</p>
+<p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542557834664.png" alt="1542557834664"></p>
+</li>
+<li><p>透视矩阵</p>
+</li>
+</ul>
+<p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542547403533.png" alt="1542547403533"></p>
+<ul>
+<li>生成立方体并旋转+Z缓冲</li>
+</ul>
+<p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542551516693.png" alt="1542551516693"></p>
+<ul>
+<li>多个立方体</li>
+</ul>
+<p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542552392750.png" alt="1542552392750"></p>
+<p>参考：</p>
+<p>LearnOpenGL中文文档：<a href="https://learnopengl-cn.github.io/" target="_blank" rel="noopener">https://learnopengl-cn.github.io/</a></p>
+<p>傅老師/OpenGL教學：<a href="https://www.bilibili.com/video/av24353839" target="_blank" rel="noopener">https://www.bilibili.com/video/av24353839</a></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        </p><p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
