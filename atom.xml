@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yhcheer.com/"/>
-  <updated>2018-12-21T07:46:40.252Z</updated>
+  <updated>2018-12-26T16:31:31.521Z</updated>
   <id>http://yhcheer.com/</id>
   
   <author>
@@ -17,17 +17,67 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>图形学基础知识整理</title>
-    <link href="http://yhcheer.com/2018/12/21/graph-note/"/>
-    <id>http://yhcheer.com/2018/12/21/graph-note/</id>
-    <published>2018-12-21T07:30:00.000Z</published>
-    <updated>2018-12-21T07:46:40.252Z</updated>
+    <title>【《计算机图形学基础》提炼总结】（一）图形学简介、历史与现状</title>
+    <link href="http://yhcheer.com/2018/12/27/graph-note-01/"/>
+    <id>http://yhcheer.com/2018/12/27/graph-note-01/</id>
+    <published>2018-12-26T16:08:00.000Z</published>
+    <updated>2018-12-26T16:31:31.521Z</updated>
     
-    <content type="html"><![CDATA[<p>由清华大学胡事民教授的<strong>《计算机图形学基础》</strong>课程教案中，个人提取出的一些<strong>学习笔记</strong>。<strong>主要内容</strong>包括：图形学简介、颜色模型、图像基本知识、Phong光照模型、视图模型变换、材质反射属性模型BRDF、光线跟踪、Bezier曲线曲面、B样条曲线曲面、网格、光线跟踪加速算法、纹理、阴影生成等。</p><a id="more"></a><h2 id="第一讲-图形学简介"><a href="#第一讲-图形学简介" class="headerlink" title="第一讲 图形学简介"></a>第一讲 图形学简介</h2><ul><li>什么是计算机图形学？</li></ul><p>Computer Graphics is a subject to investigate graphics representation, generation, processing and display by using Computers.</p><ul><li>计算机图形学的历史</li></ul><p>In 1962, MIT’s Lincoln Lab, Ivan Sutherland’s PhD Thesis  Sketchpad: A Man-Machined Graphical Communication System</p><ul><li>CAD的历史</li></ul><p>Professor Coons, the concept of “CAD” (Computer Aided Design) in 1958, Coons surface in 1964, Coons Award</p><p>In 1950, the first visual display  unit is designed for MIT’s Whirlwind I Computer</p>]]></content>
+    <content type="html"><![CDATA[<p>第一章主要讲解了计算机图形学的<strong>基本概念</strong>，包括定义以及和另一些相近研究方向的区别，并详细讲解了计算机图形学的<strong>历史与发展进程</strong>，最后展示了<strong>最新的图形学研究成果</strong>。</p><a id="more"></a><p>课程主页：<a href="https://cg.cs.tsinghua.edu.cn/course/resource.htm" target="_blank" rel="noopener">https://cg.cs.tsinghua.edu.cn/course/resource.htm</a></p><p>本系列笔记导航：<a href="http://yhcheer.com/2018/12/21/graph-note/">http://yhcheer.com/2018/12/21/graph-note/</a></p><h2 id="第一讲-图形学简介"><a href="#第一讲-图形学简介" class="headerlink" title="第一讲 图形学简介"></a>第一讲 图形学简介</h2><ul><li>什么是计算机图形学？</li></ul><p><strong>计算机图形学</strong>是利用计算机研究图形的表示、生成、处理、显示的学科。</p><p>Computer Graphics is a subject to investigate graphics representation, generation, processing and display by using Computers.</p><ul><li>图形和图像的区别？</li></ul><p><strong>图像</strong>（Image）：计算机内以位图（Bitmap）形式存在的灰度信息。</p><p><strong>图形</strong>（Graph）：场景的几何模型+景物的物理属性，如模型本身+颜色+光照属性+反射率等。主要分为基于线条表示的图形和明暗图（Shading）。</p><ul><li>计算机图形学和CAD的历史？</li></ul><p>In 1962, MIT’s Lincoln Lab, Ivan Sutherland’s PhD Thesis  Sketchpad: <strong><em>A Man-Machined Graphical Communication System</em></strong></p><p>Professor Coons, the concept of “<strong>CAD</strong>” (Computer Aided Design) in 1958, Coons surface in 1964, Coons Award</p><ul><li>计算机图形学与模式识别、计算机视觉、数字图像处理的关系？</li></ul><p><strong>计算机图形学</strong>（Computer Graphics）输入的是对虚拟场景的描述，通常为多边形数组，而每个多边形由各个顶点组成，每个顶点包括三维坐标、贴图坐标、rgb颜色等。输出的是图像，即二维像素数组。</p><p><strong>模式识别</strong>（Pattern Recognition）的重点在于识别和理解的过程，指计算机图形学进行识别和分辨的描述，是从图形到描述的表达过程，其本质是分类。</p><p><strong>计算机视觉</strong>（Computer Vision）输入的是图像，通常来自相机。输出的是对于图像对应的真实世界的理解，比如检测人脸、识别车牌。计算机图形学与计算机视觉是互逆问题。</p><p><strong>数字图像处理</strong>（Digital Image Processing）输入的是图像，输出的也是图像，对已有的图像进行变换、分析、重构。</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;由清华大学胡事民教授的&lt;strong&gt;《计算机图形学基础》&lt;/strong&gt;课程教案中，个人提取出的一些&lt;strong&gt;学习笔记&lt;/strong&gt;。&lt;strong&gt;主要内容&lt;/strong&gt;包括：图形学简介、颜色模型、图像基本知识、Phong光照模型、视图模型变换、材质反射属性模型BRDF、光线跟踪、Bezier曲线曲面、B样条曲线曲面、网格、光线跟踪加速算法、纹理、阴影生成等。&lt;/p&gt;
+      &lt;p&gt;第一章主要讲解了计算机图形学的&lt;strong&gt;基本概念&lt;/strong&gt;，包括定义以及和另一些相近研究方向的区别，并详细讲解了计算机图形学的&lt;strong&gt;历史与发展进程&lt;/strong&gt;，最后展示了&lt;strong&gt;最新的图形学研究成果&lt;/strong&gt;。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="图形学" scheme="http://yhcheer.com/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+    
+      <category term="计算机图形学" scheme="http://yhcheer.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【《计算机图形学基础》提炼总结】（二）颜色模型、图像基本知识、Phong光照模型</title>
+    <link href="http://yhcheer.com/2018/12/27/graph-note-02/"/>
+    <id>http://yhcheer.com/2018/12/27/graph-note-02/</id>
+    <published>2018-12-26T16:08:00.000Z</published>
+    <updated>2018-12-26T16:55:44.841Z</updated>
+    
+    <content type="html"><![CDATA[<p>这一章主要从<strong>颜色和光的基本概念</strong>，扩展到色彩空间的概念，详细介绍了几个常用的<strong>色彩空间</strong>。然后讲解了一些<strong>图像</strong>的基本知识，最后讲了一些<strong>光照模型</strong>的知识。</p><a id="more"></a><p>课程主页：<a href="https://cg.cs.tsinghua.edu.cn/course/resource.htm" target="_blank" rel="noopener">https://cg.cs.tsinghua.edu.cn/course/resource.htm</a></p><p>本系列笔记导航：<a href="http://yhcheer.com/2018/12/21/graph-note/">http://yhcheer.com/2018/12/21/graph-note/</a></p><h2 id="第二讲-颜色模型、图像基本知识、Phong光照模型"><a href="#第二讲-颜色模型、图像基本知识、Phong光照模型" class="headerlink" title="第二讲 颜色模型、图像基本知识、Phong光照模型"></a>第二讲 颜色模型、图像基本知识、Phong光照模型</h2><h3 id="2-1-颜色模型"><a href="#2-1-颜色模型" class="headerlink" title="2.1 颜色模型"></a>2.1 颜色模型</h3><ul><li>什么是色彩？</li></ul><p><strong>色彩</strong>是对不同波长的光的能量的感知。</p><ul><li>什么是光及光的谱分布？</li></ul><p><strong>光</strong>（Light）：是由不同波长的电磁波按照某种能量分布混合叠加而成。如白光（由所有可见波长的电磁波以相同的强度混合）。</p><p><strong>谱分布</strong>（spectral distribution）：光在各个可见波长分量的强度分布函数。如下图所示的谱分布，各可见波长分布形成一条曲线，最终形成如图下方的紫色。</p><p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/Qm7*.vX.tq1Wn7LdweKZg98P*vPVzNd4B.rEr1rEA4Q!/r/dDQBAAAAAAAA&amp;bo=tgGWArYBlgIDGTw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1545833706809"></p><p><strong>异谱同色现象</strong>（different spectrum distribution with the same color）：色彩也可用谱分布函数来表示，但不同的谱分布可能对应同一种色彩。故提出类似RGB色彩空间的概念。</p><ul><li>什么是RGB色彩空间，为什么以RGB作为三个基本色彩？</li></ul><p>色彩使用<strong>三通道RGB向量（r,g,b）</strong>表示。对每个通道可以单独操作，可以分别归整化到[0,1]内的浮点数，如果使用8bit进行存储，则通常取[0,255]内的整数。</p><p><code>色彩C=r·R+g·G+b·B</code></p><p>以RGB作为三个基本色彩，是因为人眼的视网膜中有三种锥状视觉细胞，分别对红绿蓝三种光最为敏感。</p><p><strong>RGB空间的缺点</strong>：有一部分空间是无法显示的。如下图所示，红色光取值百分比是负数。</p><p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/FKT3x2iQpxkmO.f1UKsQv9BiTK.XgY3icydgUmxAsa0!/r/dLgAAAAAAAAA&amp;bo=kQFIAZEBSAEDGTw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1545835327506"></p><ul><li>什么是CMY色彩空间？</li></ul><p><strong>CMY色彩空间</strong>：基本颜色换成青（<strong>C</strong>yan）, 品红（<strong>M</strong>agenta）和黄（<strong>Y</strong>ellow），它们分别是红绿蓝的<strong>补色</strong>。CMY是“<strong>减色系统</strong>”，像素值越大，颜色越灰暗（趋向黑色），与RGB正好相反。应用场景：印刷出版业。</p><ul><li>什么是HSV色彩空间？</li></ul><p><strong>HSV色彩空间</strong>：真彩色的颜色总数为16,777,216种（256x256x256），用RGB色彩空间来描述和定位较为困难，故HSV提供了一个直观的方法对色彩进行准确的选择。应用场景：图象处理、分形图像和光线追踪等，特别是艺术领域。</p><p><strong>H</strong>ue（色调/色相）：描述色彩的本征属性，如红橙黄绿青蓝紫等。</p><p><strong>S</strong>aturation（饱和度/纯度）：饱和度越低，色彩越白。</p><p><strong>V</strong>alue of brightness（亮度）：亮度越黑，色彩越黑。</p><p>色彩直观显示如下图：</p><p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/ywqw13DNn40m.4olM2TWPkBYXOmFdEG3j8ltTzJSQBA!/r/dL4AAAAAAAAA&amp;bo=SAEOAUgBDgEDCSw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1545836349793"></p><ul><li>什么是CIE XYZ色彩空间？</li></ul><p>CIE假定人对色彩的感知是线性的，因此对上面的rgb色域图进行了线性变换，将可见光色域变换到正数区域内，改用三个假想的原色X、Y、 Z建立了一个新的色度系统。因此<strong>CIE XYZ色彩空间</strong>可以表示<strong>所有可感知色彩</strong>（解决RGB色彩空间缺陷）。应用场景：多用于色彩科学的研究。</p><p>其中：</p><p><code>x=X/(X+Y+Z)</code></p><p><code>y=Y/(X+Y+Z)</code></p><p><code>z=Z/(X+Y+Z)=1-x-y</code></p><p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank.svg/300px-CIE1931xy_blank.svg.png" alt="wiki CIE XYZ"></p><p>这里的颜色只是示意,事实上没有设备能完全还上面所有的自然色域。在该图中任意选定两点，两点间直线上的颜色可由这两点的颜色混合成。给定三个点，三点构成的三角形内颜色可由这三个点颜色混合成。</p><h3 id="2-2-图像基本知识"><a href="#2-2-图像基本知识" class="headerlink" title="2.2 图像基本知识"></a>2.2 图像基本知识</h3><ul><li>什么是三角网格？</li></ul><p><strong>三角网格</strong>由<strong>顶点</strong>和<strong>三角面片</strong>组成。</p><p><strong>顶点</strong>集合 <code>V = (v1, v2, v3 ... vn)</code></p><p><strong>面片</strong>集合<code>F = (f1, f2, f3 ... fn)</code></p><p>其中，每个F中的每个面片fi都是由V中的顶点构成的三角形，如<code>f1 =  (v1, v2, v3)</code>，可以使用顶点的编号进行索引。</p><ul><li>怎么计算顶点的法向量？</li></ul><p>可以通过周围的所有三角面片的法向量通过加权叠加计算。</p><p>按算数平均计算：<code>N_v= (N_f1+N_f2+ ... + N_fm)/m</code></p><p>按面积加权平均计算：<code>N_v= (S_f1·N_f1+S_f2·N_f2+ ... + S_fm·N_fm)/(S_f1+S_f2+ ... +S_fm)</code></p><p>按角度加权平均计算：<code>N_v= (Ang_f1·1_fm+Ang_f2·N_f2+ ... + Ang_fm·N_fm)/(Ang_f1+ ... +Ang_fm)</code></p><h3 id="2-3-光照模型"><a href="#2-3-光照模型" class="headerlink" title="2.3 光照模型"></a>2.3 光照模型</h3><ul><li>局部光照模型和全局光照模型的区别？</li></ul><p>局部光照模型</p><p>全局光照模型</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这一章主要从&lt;strong&gt;颜色和光的基本概念&lt;/strong&gt;，扩展到色彩空间的概念，详细介绍了几个常用的&lt;strong&gt;色彩空间&lt;/strong&gt;。然后讲解了一些&lt;strong&gt;图像&lt;/strong&gt;的基本知识，最后讲了一些&lt;strong&gt;光照模型&lt;/strong&gt;的知识。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="图形学" scheme="http://yhcheer.com/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+    
+      <category term="计算机图形学" scheme="http://yhcheer.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+      <category term="色彩空间" scheme="http://yhcheer.com/tags/%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/"/>
+    
+      <category term="图像基础" scheme="http://yhcheer.com/tags/%E5%9B%BE%E5%83%8F%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="光照模型" scheme="http://yhcheer.com/tags/%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【《计算机图形学基础》提炼总结】开篇&amp;导航</title>
+    <link href="http://yhcheer.com/2018/12/21/graph-note/"/>
+    <id>http://yhcheer.com/2018/12/21/graph-note/</id>
+    <published>2018-12-21T07:30:00.000Z</published>
+    <updated>2018-12-26T16:32:08.965Z</updated>
+    
+    <content type="html"><![CDATA[<p>由清华大学胡事民教授的<strong>《计算机图形学基础》</strong>课程教案中，个人提取出的一些<strong>学习笔记</strong>。<strong>主要内容</strong>包括：图形学简介、颜色模型、图像基本知识、Phong光照模型、视图模型变换、材质反射属性模型BRDF、光线跟踪、Bezier曲线曲面、B样条曲线曲面、网格、光线跟踪加速算法、纹理、阴影生成等。本文主要以QA的形式进行总结。</p><a id="more"></a><p>课程主页：<a href="https://cg.cs.tsinghua.edu.cn/course/resource.htm" target="_blank" rel="noopener">https://cg.cs.tsinghua.edu.cn/course/resource.htm</a></p><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p><a href="http://yhcheer.com/2018/12/21/graph-note-01/">第一讲 图形学简介、历史</a></p><p><a href="http://yhcheer.com/2018/12/21/graph-note-02/">第二讲 颜色模型、图像基本知识、Phong光照模型</a></p><p>第三讲 材质反射属性模型BRDF</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;由清华大学胡事民教授的&lt;strong&gt;《计算机图形学基础》&lt;/strong&gt;课程教案中，个人提取出的一些&lt;strong&gt;学习笔记&lt;/strong&gt;。&lt;strong&gt;主要内容&lt;/strong&gt;包括：图形学简介、颜色模型、图像基本知识、Phong光照模型、视图模型变换、材质反射属性模型BRDF、光线跟踪、Bezier曲线曲面、B样条曲线曲面、网格、光线跟踪加速算法、纹理、阴影生成等。本文主要以QA的形式进行总结。&lt;/p&gt;
     
     </summary>
     
@@ -38,6 +88,8 @@
     
       <category term="学习笔记" scheme="http://yhcheer.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
+      <category term="清华大学" scheme="http://yhcheer.com/tags/%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6/"/>
+    
   </entry>
   
   <entry>
@@ -45,9 +97,9 @@
     <link href="http://yhcheer.com/2018/11/17/learn-opengl/"/>
     <id>http://yhcheer.com/2018/11/17/learn-opengl/</id>
     <published>2018-11-17T09:06:00.000Z</published>
-    <updated>2018-12-21T07:28:50.359Z</updated>
+    <updated>2018-12-21T07:53:57.044Z</updated>
     
-    <content type="html"><![CDATA[<p>所见即所闻。</p><a id="more"></a><h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><p>修改三个位置C++常规、链接器常规、输入</p><p>C/C++-常规-附加包含目录</p><p>C:\Develop\OpenGL\glew-2.1.0-win32\glew-2.1.0\include</p><p>C:\Develop\OpenGL\glfw-3.2.1.bin.WIN32\glfw-3.2.1.bin.WIN32\include</p><p>C:\Develop\OpenGL\glm-0.9.8.5\glm</p><p>glm只有头文件，没有库</p><p>链接器-常规-附加库目录</p><p>C:\Develop\OpenGL\glew-2.1.0-win32\glew-2.1.0\lib\Release\Win32</p><p>C:\Develop\OpenGL\glfw-3.2.1.bin.WIN32\glfw-3.2.1.bin.WIN32\lib-vc2015</p><p>链接器-输入-附加依赖项</p><p>opengl32.lib<br>glfw3.lib<br>glew32s.lib</p><h2 id="1-Hello-Window"><a href="#1-Hello-Window" class="headerlink" title="1. Hello Window"></a>1. Hello Window</h2><ul><li>新建窗口，更改成自己非常喜欢的底色(0.9, 0.9, 0.98)</li></ul><p><img src="C:\Users\yh\Pictures\1.png" alt=""></p><h2 id="2-Hello-Triangle"><a href="#2-Hello-Triangle" class="headerlink" title="2. Hello Triangle"></a>2. Hello Triangle</h2><ul><li>画出第一个三角形</li></ul><p><img src="C:\Users\yh\Pictures\2.png" alt=""></p><ul><li>画出两个三角形 合成的四边形</li></ul><p><img src="C:\Users\yh\Pictures\3.png" alt=""></p><ul><li>框线模式</li></ul><p><img src="C:\Users\yh\Pictures\4.png" alt=""></p><ul><li>opengl流程</li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542447163022.png" alt="1542447163022"></p><ul><li>VAO&amp;VBO&amp;EBO</li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542449853303.png" alt="1542449853303"></p><ul><li>官方文档VAO&amp;VBO&amp;EBO</li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542450985371.png" alt="1542450985371"></p><h2 id="3-Hello-Shaders"><a href="#3-Hello-Shaders" class="headerlink" title="3. Hello Shaders"></a>3. Hello Shaders</h2><ul><li>shaders的输入与输出</li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542453603179.png" alt="1542453603179"></p><ul><li>写第一个shader，颜色设为暗红色</li></ul><p><img src="C:\Users\yh\Pictures\5.png" alt=""></p><ul><li>Uniform的应用，图形背景为会呼吸渐变的绿色</li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542460859488.png" alt="1542460859488"></p><ul><li>VBO内存内部数据，添加顶点颜色数据</li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542462561030.png" alt="1542462561030"></p><ul><li>设置顶点颜色，opengl自动完成插值</li></ul><p><img src="C:\Users\yh\Pictures\7.png" alt=""></p><ul><li>读取文件的操作示意图</li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542471264896.png" alt="1542471264896"></p><h2 id="4-Hello-Texture"><a href="#4-Hello-Texture" class="headerlink" title="4. Hello Texture"></a>4. Hello Texture</h2><ul><li>导入纹理</li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542521791170.png" alt="1542521791170"></p><ul><li>纹理*顶点颜色</li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542521654452.png" alt="1542521654452"></p><ul><li>纹理滑动通道槽</li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542523870101.png" alt="1542523870101"></p><ul><li>两个纹理合并</li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542536644772.png" alt="1542536644772"></p><h2 id="5-Transform"><a href="#5-Transform" class="headerlink" title="5. Transform"></a>5. Transform</h2><ul><li><p>旋转90度，并缩放0.5倍</p><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542538546792.png" alt="1542538546792"></p></li></ul><h3 id="6-Coordinate-System"><a href="#6-Coordinate-System" class="headerlink" title="6. Coordinate System"></a>6. Coordinate System</h3><ul><li><p>MVC坐标</p><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542546003428.png" alt="1542546003428"></p></li><li><p>MVC</p><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542557834664.png" alt="1542557834664"></p></li><li><p>透视矩阵</p></li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542547403533.png" alt="1542547403533"></p><ul><li>生成立方体并旋转+Z缓冲</li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542551516693.png" alt="1542551516693"></p><ul><li>多个立方体</li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542552392750.png" alt="1542552392750"></p><p>参考：</p><p>LearnOpenGL中文文档：<a href="https://learnopengl-cn.github.io/" target="_blank" rel="noopener">https://learnopengl-cn.github.io/</a></p><p>傅老師/OpenGL教學：<a href="https://www.bilibili.com/video/av24353839" target="_blank" rel="noopener">https://www.bilibili.com/video/av24353839</a></p>]]></content>
+    <content type="html"><![CDATA[<p>所见即所闻。</p><a id="more"></a><h2 id="一、环境搭建"><a href="#一、环境搭建" class="headerlink" title="一、环境搭建"></a>一、环境搭建</h2><p><strong>记录下自己使用的环境搭建过程（备忘）：Win10+VS2017+glfw+glew</strong></p><p>修改三个位置C++常规、链接器常规、输入</p><ol><li>C/C++-常规-附加包含目录</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">C:\Develop\OpenGL\glew-2.1.0-win32\glew-2.1.0\include</span><br><span class="line">C:\Develop\OpenGL\glfw-3.2.1.bin.WIN32\glfw-3.2.1.bin.WIN32\include</span><br><span class="line">C:\Develop\OpenGL\glm-0.9.8.5\glm</span><br></pre></td></tr></table></figure><p>注意：glm只有头文件，没有库</p><ol start="2"><li>链接器-常规-附加库目录</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C:\Develop\OpenGL\glew-2.1.0-win32\glew-2.1.0\lib\Release\Win32</span><br><span class="line">C:\Develop\OpenGL\glfw-3.2.1.bin.WIN32\glfw-3.2.1.bin.WIN32\lib-vc2015</span><br></pre></td></tr></table></figure><ol start="3"><li>链接器-输入-附加依赖项</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">opengl32.lib</span><br><span class="line">glfw3.lib</span><br><span class="line">glew32s.lib</span><br></pre></td></tr></table></figure><h2 id="二、OpenGL运作流程"><a href="#二、OpenGL运作流程" class="headerlink" title="二、OpenGL运作流程"></a>二、OpenGL运作流程</h2><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542447163022.png" alt="1542447163022"></p><ul><li>VAO&amp;VBO&amp;EBO</li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542449853303.png" alt="1542449853303"></p><ul><li>官方文档VAO&amp;VBO&amp;EBO</li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542450985371.png" alt="1542450985371"></p><h2 id="3-Hello-Shaders"><a href="#3-Hello-Shaders" class="headerlink" title="3. Hello Shaders"></a>3. Hello Shaders</h2><ul><li>shaders的输入与输出</li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542453603179.png" alt="1542453603179"></p><ul><li>写第一个shader，颜色设为暗红色</li></ul><p><img src="C:\Users\yh\Pictures\5.png" alt=""></p><ul><li>Uniform的应用，图形背景为会呼吸渐变的绿色</li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542460859488.png" alt="1542460859488"></p><ul><li>VBO内存内部数据，添加顶点颜色数据</li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542462561030.png" alt="1542462561030"></p><ul><li>读取文件的操作示意图</li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542471264896.png" alt="1542471264896"></p><h2 id="4-Hello-Texture"><a href="#4-Hello-Texture" class="headerlink" title="4. Hello Texture"></a>4. Hello Texture</h2><ul><li>导入纹理</li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542521791170.png" alt="1542521791170"></p><ul><li>纹理*顶点颜色</li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542521654452.png" alt="1542521654452"></p><ul><li>纹理滑动通道槽</li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542523870101.png" alt="1542523870101"></p><ul><li>两个纹理合并</li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542536644772.png" alt="1542536644772"></p><h2 id="5-Transform"><a href="#5-Transform" class="headerlink" title="5. Transform"></a>5. Transform</h2><ul><li><p>旋转90度，并缩放0.5倍</p><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542538546792.png" alt="1542538546792"></p></li></ul><h3 id="6-Coordinate-System"><a href="#6-Coordinate-System" class="headerlink" title="6. Coordinate System"></a>6. Coordinate System</h3><ul><li><p>MVC坐标</p><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542546003428.png" alt="1542546003428"></p></li><li><p>MVC</p><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542557834664.png" alt="1542557834664"></p></li><li><p>透视矩阵</p></li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542547403533.png" alt="1542547403533"></p><ul><li>生成立方体并旋转+Z缓冲</li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542551516693.png" alt="1542551516693"></p><ul><li>多个立方体</li></ul><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542552392750.png" alt="1542552392750"></p><p>参考：</p><p>LearnOpenGL中文文档：<a href="https://learnopengl-cn.github.io/" target="_blank" rel="noopener">https://learnopengl-cn.github.io/</a></p><p>傅老師/OpenGL教學：<a href="https://www.bilibili.com/video/av24353839" target="_blank" rel="noopener">https://www.bilibili.com/video/av24353839</a></p>]]></content>
     
     <summary type="html">
     
@@ -59,6 +111,8 @@
     
     
       <category term="计算机图形学" scheme="http://yhcheer.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+      <category term="学习笔记" scheme="http://yhcheer.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
       <category term="OpenGL" scheme="http://yhcheer.com/tags/OpenGL/"/>
     
@@ -85,13 +139,13 @@
       <category term="大数据" scheme="http://yhcheer.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
     
-      <category term="Hadoop" scheme="http://yhcheer.com/tags/Hadoop/"/>
+      <category term="Java" scheme="http://yhcheer.com/tags/Java/"/>
     
       <category term="大数据" scheme="http://yhcheer.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
-      <category term="MapReduce" scheme="http://yhcheer.com/tags/MapReduce/"/>
+      <category term="Hadoop" scheme="http://yhcheer.com/tags/Hadoop/"/>
     
-      <category term="Java" scheme="http://yhcheer.com/tags/Java/"/>
+      <category term="MapReduce" scheme="http://yhcheer.com/tags/MapReduce/"/>
     
   </entry>
   
@@ -114,9 +168,9 @@
       <category term="大数据" scheme="http://yhcheer.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
     
-      <category term="Hadoop" scheme="http://yhcheer.com/tags/Hadoop/"/>
-    
       <category term="大数据" scheme="http://yhcheer.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="Hadoop" scheme="http://yhcheer.com/tags/Hadoop/"/>
     
       <category term="Hive" scheme="http://yhcheer.com/tags/Hive/"/>
     
@@ -129,9 +183,9 @@
     <link href="http://yhcheer.com/2018/10/20/ray-tarcing-in-one-weekend/"/>
     <id>http://yhcheer.com/2018/10/20/ray-tarcing-in-one-weekend/</id>
     <published>2018-10-20T14:48:33.000Z</published>
-    <updated>2018-11-17T08:52:16.995Z</updated>
+    <updated>2018-12-26T16:10:41.384Z</updated>
     
-    <content type="html"><![CDATA[<p>细读<strong>《Ray tracing in one weekend》</strong>，<strong>PeterShirly</strong>用C++语言加上一些简单的物理知识，带我们实现一个简单的光线追踪渲染器。这里是我用<strong>Java</strong>复现后的结果展示。每一章节工程代码已上传至<a href="https://github.com/yhcheer/RayTracingInOneWeekend" target="_blank" rel="noopener">Github</a>，具体实现的步骤和一些感悟写在了<a href="https://zhuanlan.zhihu.com/p/49943215" target="_blank" rel="noopener">知乎专栏</a>，如果有意见和建议还请指出，感谢！</p><a id="more"></a><h3 id="Chapter-12-Where-next"><a href="#Chapter-12-Where-next" class="headerlink" title="Chapter 12:  Where next?"></a>Chapter 12:  Where next?</h3><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp0.jpg" alt=""></p><h3 id="Chapter-11-Defocus-Blur"><a href="#Chapter-11-Defocus-Blur" class="headerlink" title="Chapter 11:   Defocus Blur"></a>Chapter 11:   Defocus Blur</h3><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp11.jpg" alt="cp11"></p><h3 id="Chapter-10-Positionable-camera"><a href="#Chapter-10-Positionable-camera" class="headerlink" title="Chapter 10:  Positionable camera"></a>Chapter 10:  Positionable camera</h3><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp10.jpg" alt=""></p><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp10_2.jpg" alt=""></p><h3 id="Chapter-9-Dielectrics"><a href="#Chapter-9-Dielectrics" class="headerlink" title="Chapter 9:  Dielectrics"></a>Chapter 9:  Dielectrics</h3><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp9.jpg" alt=""></p><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp9_2.jpg" alt=""></p><h3 id="Chapter-8-Metal"><a href="#Chapter-8-Metal" class="headerlink" title="Chapter 8:  Metal"></a>Chapter 8:  Metal</h3><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp8.jpg" alt="cp8"></p><h3 id="Chapter-7-Diffuse-Materials"><a href="#Chapter-7-Diffuse-Materials" class="headerlink" title="Chapter 7:    Diffuse Materials"></a>Chapter 7:    Diffuse Materials</h3><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp7.jpg" alt=""></p><h3 id="Chapter-6-Antialiasing"><a href="#Chapter-6-Antialiasing" class="headerlink" title="Chapter 6:  Antialiasing"></a>Chapter 6:  Antialiasing</h3><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp6.jpg" alt="Cp6"></p><h3 id="Chapter-5-Surface-normals-and-multiple-objects"><a href="#Chapter-5-Surface-normals-and-multiple-objects" class="headerlink" title="Chapter 5:   Surface normals and  multiple objects."></a>Chapter 5:   Surface normals and  multiple objects.</h3><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp5_1.jpg" alt="cp5-1"></p><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp5_3.jpg" alt=""></p><h3 id="Chapter-4-Adding-a-sphere"><a href="#Chapter-4-Adding-a-sphere" class="headerlink" title="Chapter 4:  Adding a sphere"></a>Chapter 4:  Adding a sphere</h3><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp4.jpg" alt="CP4"></p><h3 id="Chapter-3-Rays-a-simple-camera-and-background"><a href="#Chapter-3-Rays-a-simple-camera-and-background" class="headerlink" title="Chapter 3:  Rays, a simple camera, and background"></a>Chapter 3:  Rays, a simple camera, and background</h3><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp3.jpg" alt="Cp3"></p><h3 id="Chapter-2-The-vec3-class"><a href="#Chapter-2-The-vec3-class" class="headerlink" title="Chapter 2:   The vec3 class"></a>Chapter 2:   The vec3 class</h3><h3 id="Chapter-1：Output-an-image"><a href="#Chapter-1：Output-an-image" class="headerlink" title="Chapter 1：Output an image"></a>Chapter 1：Output an image</h3><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp1.jpg" alt="cp1"></p>]]></content>
+    <content type="html"><![CDATA[<p>细读<strong>《Ray tracing in one weekend》</strong>，<strong>PeterShirly</strong>用C++语言加上一些简单的物理知识，带我们实现一个简单的光线追踪渲染器。这里是我用<strong>Java</strong>复现后的结果展示。每一章节工程代码已上传至<a href="https://github.com/yhcheer/RayTracingInOneWeekend" target="_blank" rel="noopener">Github</a>，具体实现的步骤和一些感悟写在了<a href="https://zhuanlan.zhihu.com/p/49943215" target="_blank" rel="noopener">知乎专栏</a>，如果有意见和建议还请指出，感谢！</p><a id="more"></a><p>上半部分：<a href="https://zhuanlan.zhihu.com/p/49943215" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/49943215</a></p><p>下半部分：<a href="https://zhuanlan.zhihu.com/p/50451925" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/50451925</a></p><h3 id="Chapter-12-Where-next"><a href="#Chapter-12-Where-next" class="headerlink" title="Chapter 12:  Where next?"></a>Chapter 12:  Where next?</h3><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp0.jpg" alt=""></p><h3 id="Chapter-11-Defocus-Blur"><a href="#Chapter-11-Defocus-Blur" class="headerlink" title="Chapter 11:   Defocus Blur"></a>Chapter 11:   Defocus Blur</h3><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp11.jpg" alt="cp11"></p><h3 id="Chapter-10-Positionable-camera"><a href="#Chapter-10-Positionable-camera" class="headerlink" title="Chapter 10:  Positionable camera"></a>Chapter 10:  Positionable camera</h3><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp10.jpg" alt=""></p><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp10_2.jpg" alt=""></p><h3 id="Chapter-9-Dielectrics"><a href="#Chapter-9-Dielectrics" class="headerlink" title="Chapter 9:  Dielectrics"></a>Chapter 9:  Dielectrics</h3><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp9.jpg" alt=""></p><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp9_2.jpg" alt=""></p><h3 id="Chapter-8-Metal"><a href="#Chapter-8-Metal" class="headerlink" title="Chapter 8:  Metal"></a>Chapter 8:  Metal</h3><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp8.jpg" alt="cp8"></p><h3 id="Chapter-7-Diffuse-Materials"><a href="#Chapter-7-Diffuse-Materials" class="headerlink" title="Chapter 7:    Diffuse Materials"></a>Chapter 7:    Diffuse Materials</h3><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp7.jpg" alt=""></p><h3 id="Chapter-6-Antialiasing"><a href="#Chapter-6-Antialiasing" class="headerlink" title="Chapter 6:  Antialiasing"></a>Chapter 6:  Antialiasing</h3><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp6.jpg" alt="Cp6"></p><h3 id="Chapter-5-Surface-normals-and-multiple-objects"><a href="#Chapter-5-Surface-normals-and-multiple-objects" class="headerlink" title="Chapter 5:   Surface normals and  multiple objects."></a>Chapter 5:   Surface normals and  multiple objects.</h3><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp5_1.jpg" alt="cp5-1"></p><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp5_3.jpg" alt=""></p><h3 id="Chapter-4-Adding-a-sphere"><a href="#Chapter-4-Adding-a-sphere" class="headerlink" title="Chapter 4:  Adding a sphere"></a>Chapter 4:  Adding a sphere</h3><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp4.jpg" alt="CP4"></p><h3 id="Chapter-3-Rays-a-simple-camera-and-background"><a href="#Chapter-3-Rays-a-simple-camera-and-background" class="headerlink" title="Chapter 3:  Rays, a simple camera, and background"></a>Chapter 3:  Rays, a simple camera, and background</h3><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp3.jpg" alt="Cp3"></p><h3 id="Chapter-2-The-vec3-class"><a href="#Chapter-2-The-vec3-class" class="headerlink" title="Chapter 2:   The vec3 class"></a>Chapter 2:   The vec3 class</h3><h3 id="Chapter-1：Output-an-image"><a href="#Chapter-1：Output-an-image" class="headerlink" title="Chapter 1：Output an image"></a>Chapter 1：Output an image</h3><p><img src="https://raw.githubusercontent.com/yhcheer/RayTracingInOneWeekend/master/image/Cp1.jpg" alt="cp1"></p>]]></content>
     
     <summary type="html">
     
@@ -144,11 +198,11 @@
     
       <category term="计算机图形学" scheme="http://yhcheer.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
     
-      <category term="Java" scheme="http://yhcheer.com/tags/Java/"/>
-    
       <category term="光线追踪" scheme="http://yhcheer.com/tags/%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/"/>
     
       <category term="算法" scheme="http://yhcheer.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://yhcheer.com/tags/Java/"/>
     
   </entry>
   

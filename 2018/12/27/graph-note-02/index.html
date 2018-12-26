@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="yh">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="【《计算机图形学基础》提炼总结】（二）颜色模型、图像基本知识、Phong光照模型">
+  <meta property="og:description" content="">
+  <meta property="og:site_name" content="樱花飘落之时">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yhcheer.com">
+  
+    <link rel="alternate" href="/atom.xml" title="樱花飘落之时" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>樱花飘落之时</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">【《计算机图形学基础》提炼总结】（二）颜色模型、图像基本知识、Phong光照模型</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/yhcheer">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:yhcheer@zju.edu.cn">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By yh</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2018-12-27</span>
+            <span class="time">00:56:25</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/图形学/">图形学</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/计算机图形学/">#计算机图形学</a> <a class="tag" href="/tags/色彩空间/">#色彩空间</a> <a class="tag" href="/tags/图像基础/">#图像基础</a> <a class="tag" href="/tags/光照模型/">#光照模型</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>这一章主要从<strong>颜色和光的基本概念</strong>，扩展到色彩空间的概念，详细介绍了几个常用的<strong>色彩空间</strong>。然后讲解了一些<strong>图像</strong>的基本知识，最后讲了一些<strong>光照模型</strong>的知识。</p>
+<a id="more"></a>
+<p>课程主页：<a href="https://cg.cs.tsinghua.edu.cn/course/resource.htm" target="_blank" rel="noopener">https://cg.cs.tsinghua.edu.cn/course/resource.htm</a></p>
+<p>本系列笔记导航：<a href="http://yhcheer.com/2018/12/21/graph-note/">http://yhcheer.com/2018/12/21/graph-note/</a></p>
+<h2 id="第二讲-颜色模型、图像基本知识、Phong光照模型"><a href="#第二讲-颜色模型、图像基本知识、Phong光照模型" class="headerlink" title="第二讲 颜色模型、图像基本知识、Phong光照模型"></a>第二讲 颜色模型、图像基本知识、Phong光照模型</h2><h3 id="2-1-颜色模型"><a href="#2-1-颜色模型" class="headerlink" title="2.1 颜色模型"></a>2.1 颜色模型</h3><ul>
+<li>什么是色彩？</li>
+</ul>
+<p><strong>色彩</strong>是对不同波长的光的能量的感知。</p>
+<ul>
+<li>什么是光及光的谱分布？</li>
+</ul>
+<p><strong>光</strong>（Light）：是由不同波长的电磁波按照某种能量分布混合叠加而成。如白光（由所有可见波长的电磁波以相同的强度混合）。</p>
+<p><strong>谱分布</strong>（spectral distribution）：光在各个可见波长分量的强度分布函数。如下图所示的谱分布，各可见波长分布形成一条曲线，最终形成如图下方的紫色。</p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/Qm7*.vX.tq1Wn7LdweKZg98P*vPVzNd4B.rEr1rEA4Q!/r/dDQBAAAAAAAA&amp;bo=tgGWArYBlgIDGTw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1545833706809"></p>
+<p><strong>异谱同色现象</strong>（different spectrum distribution with the same color）：色彩也可用谱分布函数来表示，但不同的谱分布可能对应同一种色彩。故提出类似RGB色彩空间的概念。</p>
+<ul>
+<li>什么是RGB色彩空间，为什么以RGB作为三个基本色彩？</li>
+</ul>
+<p>色彩使用<strong>三通道RGB向量（r,g,b）</strong>表示。对每个通道可以单独操作，可以分别归整化到[0,1]内的浮点数，如果使用8bit进行存储，则通常取[0,255]内的整数。</p>
+<p><code>色彩C=r·R+g·G+b·B</code></p>
+<p>以RGB作为三个基本色彩，是因为人眼的视网膜中有三种锥状视觉细胞，分别对红绿蓝三种光最为敏感。</p>
+<p><strong>RGB空间的缺点</strong>：有一部分空间是无法显示的。如下图所示，红色光取值百分比是负数。</p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/FKT3x2iQpxkmO.f1UKsQv9BiTK.XgY3icydgUmxAsa0!/r/dLgAAAAAAAAA&amp;bo=kQFIAZEBSAEDGTw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1545835327506"></p>
+<ul>
+<li>什么是CMY色彩空间？</li>
+</ul>
+<p><strong>CMY色彩空间</strong>：基本颜色换成青（<strong>C</strong>yan）, 品红（<strong>M</strong>agenta）和黄（<strong>Y</strong>ellow），它们分别是红绿蓝的<strong>补色</strong>。CMY是“<strong>减色系统</strong>”，像素值越大，颜色越灰暗（趋向黑色），与RGB正好相反。应用场景：印刷出版业。</p>
+<ul>
+<li>什么是HSV色彩空间？</li>
+</ul>
+<p><strong>HSV色彩空间</strong>：真彩色的颜色总数为16,777,216种（256x256x256），用RGB色彩空间来描述和定位较为困难，故HSV提供了一个直观的方法对色彩进行准确的选择。应用场景：图象处理、分形图像和光线追踪等，特别是艺术领域。</p>
+<p><strong>H</strong>ue（色调/色相）：描述色彩的本征属性，如红橙黄绿青蓝紫等。</p>
+<p><strong>S</strong>aturation（饱和度/纯度）：饱和度越低，色彩越白。</p>
+<p><strong>V</strong>alue of brightness（亮度）：亮度越黑，色彩越黑。</p>
+<p>色彩直观显示如下图：</p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/ywqw13DNn40m.4olM2TWPkBYXOmFdEG3j8ltTzJSQBA!/r/dL4AAAAAAAAA&amp;bo=SAEOAUgBDgEDCSw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1545836349793"></p>
+<ul>
+<li>什么是CIE XYZ色彩空间？</li>
+</ul>
+<p>CIE假定人对色彩的感知是线性的，因此对上面的rgb色域图进行了线性变换，将可见光色域变换到正数区域内，改用三个假想的原色X、Y、 Z建立了一个新的色度系统。因此<strong>CIE XYZ色彩空间</strong>可以表示<strong>所有可感知色彩</strong>（解决RGB色彩空间缺陷）。应用场景：多用于色彩科学的研究。</p>
+<p>其中：</p>
+<p><code>x=X/(X+Y+Z)</code></p>
+<p><code>y=Y/(X+Y+Z)</code></p>
+<p><code>z=Z/(X+Y+Z)=1-x-y</code></p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank.svg/300px-CIE1931xy_blank.svg.png" alt="wiki CIE XYZ"></p>
+<p>这里的颜色只是示意,事实上没有设备能完全还上面所有的自然色域。在该图中任意选定两点，两点间直线上的颜色可由这两点的颜色混合成。给定三个点，三点构成的三角形内颜色可由这三个点颜色混合成。</p>
+<h3 id="2-2-图像基本知识"><a href="#2-2-图像基本知识" class="headerlink" title="2.2 图像基本知识"></a>2.2 图像基本知识</h3><ul>
+<li>什么是三角网格？</li>
+</ul>
+<p><strong>三角网格</strong>由<strong>顶点</strong>和<strong>三角面片</strong>组成。</p>
+<p><strong>顶点</strong>集合 <code>V = (v1, v2, v3 ... vn)</code></p>
+<p><strong>面片</strong>集合<code>F = (f1, f2, f3 ... fn)</code></p>
+<p>其中，每个F中的每个面片fi都是由V中的顶点构成的三角形，如<code>f1 =  (v1, v2, v3)</code>，可以使用顶点的编号进行索引。</p>
+<ul>
+<li>怎么计算顶点的法向量？</li>
+</ul>
+<p>可以通过周围的所有三角面片的法向量通过加权叠加计算。</p>
+<p>按算数平均计算：<code>N_v= (N_f1+N_f2+ ... + N_fm)/m</code></p>
+<p>按面积加权平均计算：<code>N_v= (S_f1·N_f1+S_f2·N_f2+ ... + S_fm·N_fm)/(S_f1+S_f2+ ... +S_fm)</code></p>
+<p>按角度加权平均计算：<code>N_v= (Ang_f1·1_fm+Ang_f2·N_f2+ ... + Ang_fm·N_fm)/(Ang_f1+ ... +Ang_fm)</code></p>
+<h3 id="2-3-光照模型"><a href="#2-3-光照模型" class="headerlink" title="2.3 光照模型"></a>2.3 光照模型</h3><ul>
+<li>局部光照模型和全局光照模型的区别？</li>
+</ul>
+<p>局部光照模型</p>
+<p>全局光照模型</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        </p><p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

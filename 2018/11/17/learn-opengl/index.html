@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2018-11-17</span>
-            <span class="time">15:47:24</span>
+            <span class="time">00:56:25</span>
           </span>
           
           <!--  Categories  -->
@@ -115,7 +115,7 @@
           <div class="post-tags text-muted">
             Tags: 
 
-<a class="tag" href="/tags/计算机图形学/">#计算机图形学</a> <a class="tag" href="/tags/OpenGL/">#OpenGL</a> <a class="tag" href="/tags/C/">#C++</a>
+<a class="tag" href="/tags/计算机图形学/">#计算机图形学</a> <a class="tag" href="/tags/学习笔记/">#学习笔记</a> <a class="tag" href="/tags/OpenGL/">#OpenGL</a> <a class="tag" href="/tags/C/">#C++</a>
 
 
           </div>
@@ -124,37 +124,22 @@
         <div class="post-content">
           <p>所见即所闻。</p>
 <a id="more"></a>
-<h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><p>修改三个位置C++常规、链接器常规、输入</p>
-<p>C/C++-常规-附加包含目录</p>
-<p>C:\Develop\OpenGL\glew-2.1.0-win32\glew-2.1.0\include</p>
-<p>C:\Develop\OpenGL\glfw-3.2.1.bin.WIN32\glfw-3.2.1.bin.WIN32\include</p>
-<p>C:\Develop\OpenGL\glm-0.9.8.5\glm</p>
-<p>glm只有头文件，没有库</p>
-<p>链接器-常规-附加库目录</p>
-<p>C:\Develop\OpenGL\glew-2.1.0-win32\glew-2.1.0\lib\Release\Win32</p>
-<p>C:\Develop\OpenGL\glfw-3.2.1.bin.WIN32\glfw-3.2.1.bin.WIN32\lib-vc2015</p>
-<p>链接器-输入-附加依赖项</p>
-<p>opengl32.lib<br>glfw3.lib<br>glew32s.lib</p>
-<h2 id="1-Hello-Window"><a href="#1-Hello-Window" class="headerlink" title="1. Hello Window"></a>1. Hello Window</h2><ul>
-<li>新建窗口，更改成自己非常喜欢的底色(0.9, 0.9, 0.98)</li>
-</ul>
-<p><img src="C:\Users\yh\Pictures\1.png" alt=""></p>
-<h2 id="2-Hello-Triangle"><a href="#2-Hello-Triangle" class="headerlink" title="2. Hello Triangle"></a>2. Hello Triangle</h2><ul>
-<li>画出第一个三角形</li>
-</ul>
-<p><img src="C:\Users\yh\Pictures\2.png" alt=""></p>
-<ul>
-<li>画出两个三角形 合成的四边形</li>
-</ul>
-<p><img src="C:\Users\yh\Pictures\3.png" alt=""></p>
-<ul>
-<li>框线模式</li>
-</ul>
-<p><img src="C:\Users\yh\Pictures\4.png" alt=""></p>
-<ul>
-<li>opengl流程</li>
-</ul>
-<p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542447163022.png" alt="1542447163022"></p>
+<h2 id="一、环境搭建"><a href="#一、环境搭建" class="headerlink" title="一、环境搭建"></a>一、环境搭建</h2><p><strong>记录下自己使用的环境搭建过程（备忘）：Win10+VS2017+glfw+glew</strong></p>
+<p>修改三个位置C++常规、链接器常规、输入</p>
+<ol>
+<li>C/C++-常规-附加包含目录</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">C:\Develop\OpenGL\glew-2.1.0-win32\glew-2.1.0\include</span><br><span class="line">C:\Develop\OpenGL\glfw-3.2.1.bin.WIN32\glfw-3.2.1.bin.WIN32\include</span><br><span class="line">C:\Develop\OpenGL\glm-0.9.8.5\glm</span><br></pre></td></tr></table></figure>
+<p>注意：glm只有头文件，没有库</p>
+<ol start="2">
+<li>链接器-常规-附加库目录</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C:\Develop\OpenGL\glew-2.1.0-win32\glew-2.1.0\lib\Release\Win32</span><br><span class="line">C:\Develop\OpenGL\glfw-3.2.1.bin.WIN32\glfw-3.2.1.bin.WIN32\lib-vc2015</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>链接器-输入-附加依赖项</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">opengl32.lib</span><br><span class="line">glfw3.lib</span><br><span class="line">glew32s.lib</span><br></pre></td></tr></table></figure>
+<h2 id="二、OpenGL运作流程"><a href="#二、OpenGL运作流程" class="headerlink" title="二、OpenGL运作流程"></a>二、OpenGL运作流程</h2><p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542447163022.png" alt="1542447163022"></p>
 <ul>
 <li>VAO&amp;VBO&amp;EBO</li>
 </ul>
@@ -179,10 +164,6 @@
 <li>VBO内存内部数据，添加顶点颜色数据</li>
 </ul>
 <p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1542462561030.png" alt="1542462561030"></p>
-<ul>
-<li>设置顶点颜色，opengl自动完成插值</li>
-</ul>
-<p><img src="C:\Users\yh\Pictures\7.png" alt=""></p>
 <ul>
 <li>读取文件的操作示意图</li>
 </ul>

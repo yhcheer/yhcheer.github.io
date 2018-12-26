@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="yh">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="【《计算机图形学基础》提炼总结】开篇&amp;导航">
+  <meta property="og:title" content="【《计算机图形学基础》提炼总结】（一）图形学简介、历史与现状">
   <meta property="og:description" content="">
   <meta property="og:site_name" content="樱花飘落之时">
   <meta property="og:type" content="article">
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">【《计算机图形学基础》提炼总结】开篇&amp;导航</p>
+          <p class="title">【《计算机图形学基础》提炼总结】（一）图形学简介、历史与现状</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -99,7 +99,7 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2018-12-21</span>
+            <span class="date">2018-12-27</span>
             <span class="time">00:56:25</span>
           </span>
           
@@ -115,19 +115,39 @@
           <div class="post-tags text-muted">
             Tags: 
 
-<a class="tag" href="/tags/计算机图形学/">#计算机图形学</a> <a class="tag" href="/tags/学习笔记/">#学习笔记</a> <a class="tag" href="/tags/清华大学/">#清华大学</a>
+<a class="tag" href="/tags/计算机图形学/">#计算机图形学</a>
 
 
           </div>
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>由清华大学胡事民教授的<strong>《计算机图形学基础》</strong>课程教案中，个人提取出的一些<strong>学习笔记</strong>。<strong>主要内容</strong>包括：图形学简介、颜色模型、图像基本知识、Phong光照模型、视图模型变换、材质反射属性模型BRDF、光线跟踪、Bezier曲线曲面、B样条曲线曲面、网格、光线跟踪加速算法、纹理、阴影生成等。本文主要以QA的形式进行总结。</p>
+          <p>第一章主要讲解了计算机图形学的<strong>基本概念</strong>，包括定义以及和另一些相近研究方向的区别，并详细讲解了计算机图形学的<strong>历史与发展进程</strong>，最后展示了<strong>最新的图形学研究成果</strong>。</p>
 <a id="more"></a>
 <p>课程主页：<a href="https://cg.cs.tsinghua.edu.cn/course/resource.htm" target="_blank" rel="noopener">https://cg.cs.tsinghua.edu.cn/course/resource.htm</a></p>
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p><a href="http://yhcheer.com/2018/12/21/graph-note-01/">第一讲 图形学简介、历史</a></p>
-<p><a href="http://yhcheer.com/2018/12/21/graph-note-02/">第二讲 颜色模型、图像基本知识、Phong光照模型</a></p>
-<p>第三讲 材质反射属性模型BRDF</p>
+<p>本系列笔记导航：<a href="http://yhcheer.com/2018/12/21/graph-note/">http://yhcheer.com/2018/12/21/graph-note/</a></p>
+<h2 id="第一讲-图形学简介"><a href="#第一讲-图形学简介" class="headerlink" title="第一讲 图形学简介"></a>第一讲 图形学简介</h2><ul>
+<li>什么是计算机图形学？</li>
+</ul>
+<p><strong>计算机图形学</strong>是利用计算机研究图形的表示、生成、处理、显示的学科。</p>
+<p>Computer Graphics is a subject to investigate graphics representation, generation, processing and display by using Computers.</p>
+<ul>
+<li>图形和图像的区别？</li>
+</ul>
+<p><strong>图像</strong>（Image）：计算机内以位图（Bitmap）形式存在的灰度信息。</p>
+<p><strong>图形</strong>（Graph）：场景的几何模型+景物的物理属性，如模型本身+颜色+光照属性+反射率等。主要分为基于线条表示的图形和明暗图（Shading）。</p>
+<ul>
+<li>计算机图形学和CAD的历史？</li>
+</ul>
+<p>In 1962, MIT’s Lincoln Lab, Ivan Sutherland’s PhD Thesis  Sketchpad: <strong><em>A Man-Machined Graphical Communication System</em></strong></p>
+<p>Professor Coons, the concept of “<strong>CAD</strong>” (Computer Aided Design) in 1958, Coons surface in 1964, Coons Award</p>
+<ul>
+<li>计算机图形学与模式识别、计算机视觉、数字图像处理的关系？</li>
+</ul>
+<p><strong>计算机图形学</strong>（Computer Graphics）输入的是对虚拟场景的描述，通常为多边形数组，而每个多边形由各个顶点组成，每个顶点包括三维坐标、贴图坐标、rgb颜色等。输出的是图像，即二维像素数组。</p>
+<p><strong>模式识别</strong>（Pattern Recognition）的重点在于识别和理解的过程，指计算机图形学进行识别和分辨的描述，是从图形到描述的表达过程，其本质是分类。</p>
+<p><strong>计算机视觉</strong>（Computer Vision）输入的是图像，通常来自相机。输出的是对于图像对应的真实世界的理解，比如检测人脸、识别车牌。计算机图形学与计算机视觉是互逆问题。</p>
+<p><strong>数字图像处理</strong>（Digital Image Processing）输入的是图像，输出的也是图像，对已有的图像进行变换、分析、重构。</p>
 
         </div>
       </div>
