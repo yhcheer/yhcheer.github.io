@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="yh">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="【《计算机图形学基础》提炼总结】（一）简介、历史与现状">
+  <meta property="og:title" content="【《计算机图形学基础》提炼总结】（三）材质反射属性模型BRDF">
   <meta property="og:description" content="">
   <meta property="og:site_name" content="樱花飘落之时">
   <meta property="og:type" content="article">
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">【《计算机图形学基础》提炼总结】（一）简介、历史与现状</p>
+          <p class="title">【《计算机图形学基础》提炼总结】（三）材质反射属性模型BRDF</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -115,39 +115,60 @@
           <div class="post-tags text-muted">
             Tags: 
 
-<a class="tag" href="/tags/计算机图形学/">#计算机图形学</a>
+<a class="tag" href="/tags/计算机图形学/">#计算机图形学</a> <a class="tag" href="/tags/BRDF/">#BRDF</a>
 
 
           </div>
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>第一章主要讲解了<strong>计算机图形学的基本概念</strong>，包括定义以及和另一些相近研究方向的区别，并详细讲解了计算机图形学的<strong>历史与发展进程</strong>，最后展示了<strong>最新的图形学研究成果</strong>。作为绪论的一章，重在引起同学们的兴趣。</p>
+          <p>第一章主要讲解了计算机图形学的<strong>基本概念</strong>，包括定义以及和另一些相近研究方向的区别，并详细讲解了计算机图形学的<strong>历史与发展进程</strong>，最后展示了<strong>最新的图形学研究成果</strong>。作为绪论的一章，重在引起同学们的兴趣。</p>
 <a id="more"></a>
+<p>这节课先回顾了一下一些数学和辐射度量学的基本概念，</p>
 <p>课程主页：<a href="https://cg.cs.tsinghua.edu.cn/course/resource.htm" target="_blank" rel="noopener">https://cg.cs.tsinghua.edu.cn/course/resource.htm</a></p>
 <p>本系列笔记导航：<a href="http://yhcheer.com/2018/12/21/graph-note/">http://yhcheer.com/2018/12/21/graph-note/</a></p>
-<h2 id="第一讲-图形学简介"><a href="#第一讲-图形学简介" class="headerlink" title="第一讲 图形学简介"></a>第一讲 图形学简介</h2><ul>
-<li>什么是计算机图形学？</li>
+<h2 id="第三讲-材质反射属性模型BRDF"><a href="#第三讲-材质反射属性模型BRDF" class="headerlink" title="第三讲 材质反射属性模型BRDF"></a>第三讲 材质反射属性模型BRDF</h2><ul>
+<li>一些基本概念复习</li>
 </ul>
-<p><strong>计算机图形学</strong>是利用计算机研究图形的表示、生成、处理、显示的学科。</p>
-<p>Computer Graphics is a subject to investigate graphics representation, generation, processing and display by using Computers.</p>
+<p>球面坐标（Spherical Coordinate）</p>
+<p>立体角（Solid Angle）</p>
+<p>投影面积（Foreshortened Area）</p>
+<p>光能（Radiant Energy）</p>
+<p>光通量（Radiant Flux）</p>
+<p>辉度（Irradiance）</p>
+<p>发光强度（Radiant Intensity）</p>
+<p>光亮度（Radiance）</p>
 <ul>
-<li>图形和图像的区别？</li>
+<li>什么是BRDF？</li>
 </ul>
-<p><strong>图像</strong>（Image）：计算机内以位图（Bitmap）形式存在的灰度信息。</p>
-<p><strong>图形</strong>（Graph）：场景的几何模型+景物的物理属性，如模型本身+颜色+光照属性+反射率等。主要分为基于线条表示的图形和明暗图（Shading）。</p>
+<p>为了研究光线如何被物体反射。</p>
+<p>BRDF是关于入射光方向和反射光方向的四维实值函数，它等于<strong>反射方向的光亮度</strong>和<strong>入射方向入射光的辉度</strong>之比。</p>
+<p><img src="https://gss0.bdstatic.com/-4o3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike52%2C5%2C5%2C52%2C17/sign=de21a67d0cd79123f4ed9c26cc5d32e7/0ff41bd5ad6eddc4457b428e39dbb6fd52663322.jpg" alt="BRDF公式"></p>
 <ul>
-<li>计算机图形学和CAD的历史？</li>
+<li>为什么BRDF是光亮度和辉度之比，而不是光亮度和光亮度之比活着辉度和辉度之比？</li>
 </ul>
-<p>In 1962, MIT’s Lincoln Lab, Ivan Sutherland’s PhD Thesis  Sketchpad: <strong><em>A Man-Machined Graphical Communication System</em></strong></p>
-<p>Professor Coons, the concept of “<strong>CAD</strong>” (Computer Aided Design) in 1958, Coons surface in 1964, Coons Award</p>
+<p>我们假设人眼是从反射方向上看物体，而看到的就是反射光线上的<strong>光亮度</strong>，但是不同方向的入射光照到该点都可能从这个反射方向上反射出来，因此对于入射光，我们需要对面积积分，因此相当于光亮度对面积积分用<strong>辉度</strong>来表示。</p>
+<p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1546064003017.png" alt="1546064003017"></p>
 <ul>
-<li>计算机图形学与模式识别、计算机视觉、数字图像处理的关系？</li>
+<li>BRDF的性质？</li>
 </ul>
-<p><strong>计算机图形学</strong>（Computer Graphics）输入的是对虚拟场景的描述，通常为多边形数组，而每个多边形由各个顶点组成，每个顶点包括三维坐标、贴图坐标、rgb颜色等。输出的是图像，即二维像素数组。</p>
-<p><strong>模式识别</strong>（Pattern Recognition）的重点在于识别和理解的过程，指计算机图形学进行识别和分辨的描述，是从图形到描述的表达过程，其本质是分类。</p>
-<p><strong>计算机视觉</strong>（Computer Vision）输入的是图像，通常来自相机。输出的是对于图像对应的真实世界的理解，比如检测人脸、识别车牌。计算机图形学与计算机视觉是互逆问题。</p>
-<p><strong>数字图像处理</strong>（Digital Image Processing）输入的是图像，输出的也是图像，对已有的图像进行变换、分析、重构。</p>
+<p><strong>可逆性</strong>（Reciprocity）：光路可逆性，交换入射光和反射光不会改变BRDF的值。</p>
+<p><strong>能量守恒</strong>（Energy conservation）：入射光的能量与出射光的总能量应该相等。</p>
+<blockquote>
+<p>Q_in = Q_reflected + Q_absorb + Q_transmitted</p>
+</blockquote>
+<p>由上式可知：Q_reflected &lt;= Q_in</p>
+<p>故可得</p>
+<p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1546065992133.png" alt="1546065992133"></p>
+<p><strong>渲染方程</strong>（Rendering Equation）:用于计算环境光照明下的<strong>反射光的光亮度</strong>，它可以写成<strong>不同角度下入射光的光亮度</strong>乘以<strong>BRDF的积分</strong>。</p>
+<p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1546066221836.png" alt="1546066221836"></p>
+<ul>
+<li>BRDF的模型？</li>
+</ul>
+<p>为了方便和高效地使用BRDF数据，它往往被组织成参数化的数值模型。</p>
+<p><strong>经验模型</strong>（Empirical Models）</p>
+<p><strong>基于物理的模型</strong>（Physical-based Models）</p>
+<p><strong>数据表达的模型</strong>（Data-driven Models）</p>
 
         </div>
       </div>
