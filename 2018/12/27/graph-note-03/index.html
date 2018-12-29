@@ -38,7 +38,7 @@
     <!-- Page Header -->
 
 
-<header class="site-header header-background" style="background-image: url(/img/yinghua.jpg)">
+<header class="site-header header-background" style="background-image: url(/images/graph-note-03.jpg)">
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2018-12-27</span>
-            <span class="time">21:59:14</span>
+            <span class="time">00:39:47</span>
           </span>
           
           <!--  Categories  -->
@@ -115,16 +115,15 @@
           <div class="post-tags text-muted">
             Tags: 
 
-<a class="tag" href="/tags/计算机图形学/">#计算机图形学</a> <a class="tag" href="/tags/BRDF/">#BRDF</a>
+<a class="tag" href="/tags/计算机图形学/">#计算机图形学</a> <a class="tag" href="/tags/BRDF/">#BRDF</a> <a class="tag" href="/tags/经验模型/">#经验模型</a>
 
 
           </div>
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>第一章主要讲解了计算机图形学的<strong>基本概念</strong>，包括定义以及和另一些相近研究方向的区别，并详细讲解了计算机图形学的<strong>历史与发展进程</strong>，最后展示了<strong>最新的图形学研究成果</strong>。作为绪论的一章，重在引起同学们的兴趣。</p>
+          <p>这节课先回顾了一下一些<strong>数学和辐射度量学</strong>的基本概念，讲了<strong>BRDF定义</strong>以及<strong>BRDF模型</strong>分类。详细讲解了一些<strong>经验模型</strong>等。</p>
 <a id="more"></a>
-<p>这节课先回顾了一下一些数学和辐射度量学的基本概念，</p>
 <p>课程主页：<a href="https://cg.cs.tsinghua.edu.cn/course/resource.htm" target="_blank" rel="noopener">https://cg.cs.tsinghua.edu.cn/course/resource.htm</a></p>
 <p>本系列笔记导航：<a href="http://yhcheer.com/2018/12/21/graph-note/">http://yhcheer.com/2018/12/21/graph-note/</a></p>
 <h2 id="第三讲-材质反射属性模型BRDF"><a href="#第三讲-材质反射属性模型BRDF" class="headerlink" title="第三讲 材质反射属性模型BRDF"></a>第三讲 材质反射属性模型BRDF</h2><ul>
@@ -148,7 +147,7 @@
 <li>为什么BRDF是光亮度和辉度之比，而不是光亮度和光亮度之比活着辉度和辉度之比？</li>
 </ul>
 <p>我们假设人眼是从反射方向上看物体，而看到的就是反射光线上的<strong>光亮度</strong>，但是不同方向的入射光照到该点都可能从这个反射方向上反射出来，因此对于入射光，我们需要对面积积分，因此相当于光亮度对面积积分用<strong>辉度</strong>来表示。</p>
-<p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1546064003017.png" alt="1546064003017"></p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/0SFU7cxsZtgYj0c6*s2BndKUZcDttKoas.i0lKn6y1A!/r/dL8AAAAAAAAA&amp;bo=KANZASgDWQEDGTw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1546064003017"></p>
 <ul>
 <li>BRDF的性质？</li>
 </ul>
@@ -159,16 +158,47 @@
 </blockquote>
 <p>由上式可知：Q_reflected &lt;= Q_in</p>
 <p>故可得</p>
-<p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1546065992133.png" alt="1546065992133"></p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/8H6pC10QX*cEFGZmbyYL1.4eXOiqujjfgTs6JjfVHJQ!/r/dL8AAAAAAAAA&amp;bo=nAJVAJwCVQADGTw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1546065992133"></p>
 <p><strong>渲染方程</strong>（Rendering Equation）:用于计算环境光照明下的<strong>反射光的光亮度</strong>，它可以写成<strong>不同角度下入射光的光亮度</strong>乘以<strong>BRDF的积分</strong>。</p>
-<p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1546066221836.png" alt="1546066221836"></p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/KiuBzi0Wzw2eY5lT*apPKCYQIWOHYROxmWwy3umNzmw!/r/dFIBAAAAAAAA&amp;bo=WQJcAFkCXAADGTw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1546066221836"></p>
 <ul>
-<li>BRDF的模型？</li>
+<li>BRDF的模型分为哪几种？</li>
 </ul>
 <p>为了方便和高效地使用BRDF数据，它往往被组织成参数化的数值模型。</p>
-<p><strong>经验模型</strong>（Empirical Models）</p>
-<p><strong>基于物理的模型</strong>（Physical-based Models）</p>
-<p><strong>数据表达的模型</strong>（Data-driven Models）</p>
+<p><strong>经验模型</strong>（Empirical Models）：基于<strong>实验</strong>提出的公式对BRDF做快速估计。</p>
+<ol>
+<li><p>提供<strong>简洁</strong>的公式便于反射光线的<strong>快速</strong>计算。</p>
+</li>
+<li><p><strong>不考虑材质特性</strong>，仅仅提供一个反射光的粗糙近似。</p>
+</li>
+<li><p>经验模型<strong>不一定满足物理定律</strong>，如可逆性或能量守恒性质。</p>
+</li>
+</ol>
+<p><strong>基于物理的模型</strong>（Physical-based Models）：根据物体表面材料的<strong>几何以及光学属性</strong>建立反射方程，从而计算BRDF。</p>
+<p><strong>数据表达的模型</strong>（Data-driven Models）：将BRDF按照<strong>实测数据</strong>建立查找表，以便于快速查找和计算。</p>
+<ul>
+<li>什么是经验模型中的Lambertain模型？</li>
+</ul>
+<p><strong>Lambertain模型</strong>：入射光线<strong>均匀</strong>反射到各个地方，沿不同地方BRDF是一个常数，<strong>各向同性</strong>。因此与入射光的角度无关。</p>
+<p><strong>反射率</strong>（Albedo）：反射光的<strong>辉度</strong>和入射光的<strong>辉度</strong>之比。</p>
+<p>公式推导如下，其中<strong>f是一个常数</strong>可以提出。<strong>反射光的光亮度Lr</strong>可以表示成<strong>入射光的辉度E</strong>乘以<strong>一个常数f</strong>。而<strong>反射率</strong>最后推导出结果为Pi·f，也是个<strong>常数</strong>。</p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/Y.ibNgMlypMmoLMNfx4.KvsALBq1vy0sfj9eGPzFKVc!/r/dL4AAAAAAAAA&amp;bo=HAPuABwD7gADGTw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1546093412775"></p>
+<p><strong>应用场景</strong>：</p>
+<p>描述包含纯粹漫反射的物体（如纸张、黑板等）</p>
+<p>不能表现材质的镜面效果（如金属材质）</p>
+<p>常用在其他经验模型中作为一部分分量而存在（如Phong模型）</p>
+<ul>
+<li>什么是经验模型中的Phong模型？</li>
+</ul>
+<p><strong>Phong模型</strong>：在Lambertain模型基础上添加一项镜面反射项，以表达在反射角上的镜面反射效果。</p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/5zSDAjs4HGSobbVtyzsXxfwCzhKYduyER.a1vQS3wiU!/r/dDQBAAAAAAAA&amp;bo=HQNRAR0DUQEDGTw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1546097156202"></p>
+<p>其中，l入射光，r反射光，n法向，v视点方向，s是发光/高光指数，用以描述镜面反射的锐利度。Pd是漫反射光（Lambertain模型）的反射率，Ps是镜面反射光的反射率。</p>
+<p>Phong模型还有大量扩展，主要是为了实现进一步<strong>加速</strong>。比如</p>
+<p><strong>Blinn-Phong模型</strong>：引入入射方向l和反射方向v的<strong>角平分线h</strong>，使用<strong>h和法向n点积</strong>代替原先的Phong模型中的r和v的点积。</p>
+<p><img src="http://m.qpic.cn/psb?/V10ldIv84XBZXi/lICoGYq1UKoFtbx9SS3jGdoxMJK1wgnclKp9q8RsFBA!/b/dLYAAAAAAAAA&amp;bo=4gJrAOICawADGTw!&amp;rf=viewer_4" alt="1546098532531"></p>
+<p>原模型必须计算r，而这个新模型<strong>省去计算r方向这一步</strong>，加快了计算步骤。</p>
+<p><strong>快速Phong绘制</strong>（Fast Phong Shading）：用制表和插值的方法对指数项(r·v)^s进行快速计算，从而实现绘制加速。</p>
+<p><strong>可逆Phong模型</strong>（Modified Phong Model）：去掉Phong模型的分母项，从而使得Phong模型能够<strong>满足可逆性</strong>。</p>
 
         </div>
       </div>
