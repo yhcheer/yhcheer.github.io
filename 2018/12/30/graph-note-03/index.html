@@ -99,8 +99,8 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2018-12-27</span>
-            <span class="time">00:42:36</span>
+            <span class="date">2018-12-30</span>
+            <span class="time">18:03:49</span>
           </span>
           
           <!--  Categories  -->
@@ -115,14 +115,14 @@
           <div class="post-tags text-muted">
             Tags: 
 
-<a class="tag" href="/tags/计算机图形学/">#计算机图形学</a> <a class="tag" href="/tags/BRDF/">#BRDF</a> <a class="tag" href="/tags/经验模型/">#经验模型</a>
+<a class="tag" href="/tags/计算机图形学/">#计算机图形学</a> <a class="tag" href="/tags/BRDF/">#BRDF</a> <a class="tag" href="/tags/光照模型/">#光照模型</a>
 
 
           </div>
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>这节课先回顾了一下一些<strong>数学和辐射度量学</strong>的基本概念，讲了<strong>BRDF定义</strong>以及<strong>BRDF模型</strong>分类。详细讲解了一些<strong>经验模型</strong>等。</p>
+          <p>这节课先回顾了一下一些<strong>数学和辐射度量学</strong>的基本概念，讲了<strong>BRDF定义</strong>以及<strong>BRDF模型</strong>分类。详细讲解了一些<strong>经验模型、基于物理的模型</strong>等。</p>
 <a id="more"></a>
 <p>课程主页：<a href="https://cg.cs.tsinghua.edu.cn/course/resource.htm" target="_blank" rel="noopener">https://cg.cs.tsinghua.edu.cn/course/resource.htm</a></p>
 <p>本系列笔记导航：<a href="http://yhcheer.com/2018/12/21/graph-note/">http://yhcheer.com/2018/12/21/graph-note/</a></p>
@@ -165,7 +165,7 @@
 <li>BRDF的模型分为哪几种？</li>
 </ul>
 <p>为了方便和高效地使用BRDF数据，它往往被组织成参数化的数值模型。</p>
-<p><strong>经验模型</strong>（Empirical Models）：基于<strong>实验</strong>提出的公式对BRDF做快速估计。</p>
+<p>一、<strong>经验模型</strong>（Empirical Models）：基于<strong>实验</strong>提出的公式对BRDF做快速估计。</p>
 <ol>
 <li><p>提供<strong>简洁</strong>的公式便于反射光线的<strong>快速</strong>计算。</p>
 </li>
@@ -174,8 +174,23 @@
 <li><p>经验模型<strong>不一定满足物理定律</strong>，如可逆性或能量守恒性质。</p>
 </li>
 </ol>
-<p><strong>基于物理的模型</strong>（Physical-based Models）：根据物体表面材料的<strong>几何以及光学属性</strong>建立反射方程，从而计算BRDF。</p>
-<p><strong>数据表达的模型</strong>（Data-driven Models）：将BRDF按照<strong>实测数据</strong>建立查找表，以便于快速查找和计算。</p>
+<p>二、<strong>基于物理的模型</strong>（Physical-based Models）：根据物体表面材料的<strong>几何以及光学属性</strong>建立反射方程，从而计算BRDF。</p>
+<ol>
+<li>通常建立在表面<strong>粗糙度</strong>（surface roughness）的细节几何结构上。</li>
+<li>而微观上看，几乎没有光滑的表面，表面几何是由一组<strong>微平面</strong>（microfacets）几何来建模的。</li>
+<li>粗糙度可以由<strong>微平面法向的统计分布</strong>来表达。</li>
+</ol>
+<p><img src="C:\Users\yh\AppData\Roaming\Typora\typora-user-images\1546133803701.png" alt="1546133803701"></p>
+<p>三、<strong>数据驱动的模型</strong>（Data-driven Models）：将BRDF按照<strong>实测数据</strong>建立查找表，以便于快速查找和计算。</p>
+<p><strong>度量</strong>一个大的材料集合的BRDF，并将其记录为<strong>高维</strong>向量，利用降维的方法从这些数据中计算一个<strong>低维</strong>模型。</p>
+<ol>
+<li><p>灵活，对材料属性没有假设限定，<strong>直接测量</strong>。</p>
+</li>
+<li><p><strong>很大的数据集</strong>，通常需要数据降维方法来压缩数据</p>
+</li>
+</ol>
+<p>代表工作：[A Data-Driven Reflectance Model, ACM SIGGRAPH, 2003]</p>
+<p>下面详细介绍这三种BRDF模型。</p>
 <ul>
 <li>什么是经验模型中的Lambertain模型？</li>
 </ul>
@@ -188,17 +203,90 @@
 <p>不能表现材质的镜面效果（如金属材质）</p>
 <p>常用在其他经验模型中作为一部分分量而存在（如Phong模型）</p>
 <ul>
-<li>什么是经验模型中的Phong模型？</li>
+<li>详细介绍下经验模型中的Phong模型以及它的引申？</li>
 </ul>
 <p><strong>Phong模型</strong>：在Lambertain模型基础上添加一项镜面反射项，以表达在反射角上的镜面反射效果。</p>
 <p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/5zSDAjs4HGSobbVtyzsXxfwCzhKYduyER.a1vQS3wiU!/r/dDQBAAAAAAAA&amp;bo=HQNRAR0DUQEDGTw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1546097156202"></p>
 <p>其中，l入射光，r反射光，n法向，v视点方向，s是发光/高光指数，用以描述镜面反射的锐利度。Pd是漫反射光（Lambertain模型）的反射率，Ps是镜面反射光的反射率。</p>
 <p>Phong模型还有大量扩展，主要是为了实现进一步<strong>加速</strong>。比如</p>
 <p><strong>Blinn-Phong模型</strong>：引入入射方向l和反射方向v的<strong>角平分线h</strong>，使用<strong>h和法向n点积</strong>代替原先的Phong模型中的r和v的点积。</p>
-<p><img src="http://m.qpic.cn/psb?/V10ldIv84XBZXi/lICoGYq1UKoFtbx9SS3jGdoxMJK1wgnclKp9q8RsFBA!/b/dLYAAAAAAAAA&amp;bo=4gJrAOICawADGTw!&amp;rf=viewer_4" alt="1546098532531"></p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/lICoGYq1UKoFtbx9SS3jGdoxMJK1wgnclKp9q8RsFBA!/r/dLYAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=4gJrAOICawADGTw!&amp;tl=1&amp;vuin=406943342&amp;tm=1546131600&amp;sce=60-2-2&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1546098532531"></p>
 <p>原模型必须计算r，而这个新模型<strong>省去计算r方向这一步</strong>，加快了计算步骤。</p>
 <p><strong>快速Phong绘制</strong>（Fast Phong Shading）：用制表和插值的方法对指数项(r·v)^s进行快速计算，从而实现绘制加速。</p>
 <p><strong>可逆Phong模型</strong>（Modified Phong Model）：去掉Phong模型的分母项，从而使得Phong模型能够<strong>满足可逆性</strong>。</p>
+<ul>
+<li>什么是菲涅尔项？</li>
+</ul>
+<p><strong>菲涅尔现象</strong>：实际生活中，我们可以发现随着视角和地面的夹角越小，<strong>擦地角</strong>（grazing angles）附近，越能看出倒影。海面上低视角能看到很多光影也是此类似效果。</p>
+<p>入射光的反射量由从<strong>麦克斯韦电磁波方程组中得到的菲涅尔公式</strong>得到。</p>
+<p><strong>菲涅尔项</strong>（Fresnel Term）与<strong>菲涅尔反射率</strong>（Fresnel Reflectance）：</p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/pSX0NiXFNoaGesbMjWChN3SJIVGgy8Qn*c7ArnRS6.A!/r/dD4BAAAAAAAA&amp;bo=SAOlAUgDpQEDGTw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1546134387343"></p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/wJog9czKuOfPsXL0BpUZ18T4JgVokWSP6Lp8AH*KtQI!/r/dL8AAAAAAAAA&amp;bo=TAPCAUwDwgEDGTw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1546134864183"></p>
+<ul>
+<li>什么是Cook-Torrance模型？</li>
+</ul>
+<p>发表于1981年的SIGGRAPH，图形学最早的BRDF模型。</p>
+<p>假设<strong>微平面都是镜面反射</strong>，假设按如下所示的<strong>V形沟槽排列</strong>。</p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/1GrEq7axw1pRM.Q02bce5KPi11FvEF7H69AtBo*oB78!/r/dL8AAAAAAAAA&amp;bo=PgMSAT4DEgEDGTw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1546135683027"></p>
+<p>结合Lambertian<strong>漫反射项</strong>和微平面反射的<strong>镜面反射项</strong>。</p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/igrJyvWSg9nnrXRFEvmPUWrXcUREAqW807JBjXYVMMU!/r/dL8AAAAAAAAA&amp;bo=5AJ8AOQCfAADCSw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1546135748979"></p>
+<p>前项是<strong>Lambertian的BRDF</strong>乘上d（漫反射的系数）。后项是考虑反射的时候的<strong>菲涅尔项</strong>乘上s（镜面反射的系数），F是<strong>菲涅尔因子</strong>（Fresnel factor），D是<strong>微平面法向的分布函数</strong>，G是<strong>几何衰减因子</strong>，下面详细解释这两个参数。</p>
+<p><strong>微平面法向的分布函数D</strong>：由于微平面只有镜面反射，故只有<strong>法向沿平分线方向h的微平面</strong>才对镜面反射起作用。采用Bechmann分布来描述：</p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/juqcX0x1FJ0VDo6ZL4LjcR2w8hSV6zuRAop30d8oJG4!/r/dL4AAAAAAAAA&amp;bo=HQPDAR0DwwEDGTw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1546136980334"></p>
+<p>其中m是表面的粗糙度值，\beta是n和h的夹角。</p>
+<p><strong>几何衰减因子G</strong>：考虑<strong>来自视角方向的遮挡效果</strong>和<strong>来自光线方向的阴影效果</strong>。其结果一定是小于1的。</p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/SoA9TL7nbgK4cp9Wd6I.WBrpmINtvXqQ1WTXTtxXSz4!/r/dDcBAAAAAAAA&amp;bo=SQPVAUkD1QEDGTw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1546137254967"></p>
+<p>基于上述这种考虑，使得我们能产生某些反射的特性。</p>
+<p><strong>反射方向不在镜面方向的反射</strong>（off-specular reflection）：比如粗糙表面。</p>
+<p><strong>逆反射</strong>（retroreflection）：很大一部分光沿着反方向返回，比如满月的图片。</p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/PCoh0ajtse5g326K45X1x52mF0eBpCEHyhzVM2tzujo!/r/dFIBAAAAAAAA&amp;bo=HwPkAB8D5AADGTw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1546138821576"></p>
+<p>总结：Cook-Torrance模型就是<strong>改进了高光项</strong>的Phong模型。</p>
+<ul>
+<li>各向同性和各向异性的BRDF有什么区别？</li>
+</ul>
+<p><strong>各向同性</strong>（Isotropic）：</p>
+<ol>
+<li>反射不受给定表面法向夹角的约束</li>
+<li>随机的表面微结构</li>
+</ol>
+<p><strong>各向异性</strong>（Anisotropic）：</p>
+<ol>
+<li>反射比随着与给定的表面法向之间的夹角而变化</li>
+<li>图案的表面微结构</li>
+<li>应用：金属丝，绸缎，毛发</li>
+</ol>
+<p>Phong模型和Cook-Torrance模型都不能处理各向异性的效果！因此引入Ward模型。</p>
+<ul>
+<li>什么是Ward模型？</li>
+</ul>
+<p>1992年SIGGRAPH提出，是一种<strong>更一般的表面法向表达方式</strong>：通过<strong>椭圆体</strong>（ellipsoids）这种允许各向异性反射的形式来表达。但这个模型没有考虑<strong>菲涅尔因子</strong>（Fresnel factor）和<strong>几何衰减因子</strong>（geometric attenuation factor）G，所以它像一种经验模型。</p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/lIgQXoc5Wj.nVG*bfB0FACcebA4RH9QA16Sj7*VYScM!/r/dMMAAAAAAAAA&amp;bo=MQRAAjEEQAIDORw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1546151238642"></p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/Lf4SnY9LltJR2FVZEXx7EhZ.JjIZx71tTkUIGl.Wa5c!/r/dLgAAAAAAAAA&amp;bo=UARnAlAEZwIDORw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1546151372165"></p>
+<ul>
+<li>更多的BRDF模型…</li>
+</ul>
+<p><strong>Oren-Nayar model</strong> [Generalization of Lambert’s Reflectance Model ACM SIGGRAPH, 1994]：把微平面看做Lambertian漫反射面，而不是镜面反射。</p>
+<p><strong>Poulin-Fournier model</strong> [A Model for Anisotropic Reflection, ACM SIGGRAPH, 1990]：把微平面法向表示成一组平行的圆柱，同样处理各向异性的情况。</p>
+<p>波动光线（Wave optic）相关模型：材料的微平面大小和光的波长相当，基于不同的衍射（diffraction）理论，有两个工作：<br>[A Comprehensive Physical Model for Light Reflection，ACM SIGGRAPH, 1991]</p>
+<p>[Diffraction Shaders, ACM SIGGRAPH, 1999]</p>
+<p>但这两个模型本身过于<strong>复杂</strong>而限制了它们的应用。如：CD光盘的渲染。</p>
+<ul>
+<li>怎么测量BRDF？</li>
+</ul>
+<p>为了对具有未知反射属性的材料进行建模，并生成具有高度真实感的结果。</p>
+<p>逆渲染：恢复BRDF和其他场景属性的过程</p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/ALhrIY7*lt6tYP41aEStkZrRk2qdkUcIJR1IpaoVH4g!/r/dLYAAAAAAAAA&amp;bo=TAPPAEwDzwADCSw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1546155386282"></p>
+<p>BRDF是一个关于<strong>光线和视角</strong>的函数，其度量可通过对<strong>2D光照空间</strong>和<strong>2D视角空间</strong>进行采样获得。</p>
+<p>可以固定材料，移动光源和相机；</p>
+<p>也可以固定光源，移动物体和相机；</p>
+<p>如果目标物体是单一材料构成的已知凸几何体，可以固定光源和样本，移动相机。</p>
+<ul>
+<li>BRDF有哪些测量设备？</li>
+</ul>
+<p><strong>Light stage</strong> [SIGGRAPH, 2000]：从固定的物体上采集BRDF，从少数的几个视角拍摄<strong>2000多个</strong>不同光源方向下的图像，从所有图像点上同时<strong>获取BRDF</strong>。</p>
+<p>获取之后对现有模型可使用<strong>重光照</strong>（Re-illuminate）来恢复光照效果。</p>
+<p><strong>Gonioreflectometer</strong> [SIGGRAPH, 1992]：简化版Light stage，由机械臂移动代替多个相机和光源，大幅度节省了成本。利用一个半镀银的半球从多个方向同时观察材料样本。由半球外的一个光源对物体进行照明。通过鱼眼镜头一次性同时采集整个半球的信息。排除了2个维度，<strong>仅需要移动光源</strong>。</p>
+<p><strong>相机参数矫正</strong>（Camera Calibration）：不许进行几方面矫正：外部参数，如位置和朝向；内部参数，如焦距和相机中心。利用Zhang方法 [a flexible new technique for camera calibration, IEEE PAMI]，通过拍摄多个具有<strong>一定模式的图像</strong>（pattern images）。</p>
 
         </div>
       </div>
