@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yhcheer.com/"/>
-  <updated>2018-12-29T16:42:26.835Z</updated>
+  <updated>2019-02-28T16:59:31.856Z</updated>
   <id>http://yhcheer.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【置顶】关于我，活成自己想要的样子</title>
+    <link href="http://yhcheer.com/2048/11/11/hello-world/"/>
+    <id>http://yhcheer.com/2048/11/11/hello-world/</id>
+    <published>2048-11-11T03:11:11.000Z</published>
+    <updated>2019-02-28T16:59:31.856Z</updated>
+    
+    <content type="html"><![CDATA[<p>时隔9月，我的博客终于翻新了。</p><a id="more"></a><p>一般总结好的博文，我才会放在我的”樱飘”博客里，然后通过外链接出去（为了整洁），没做好整理的就零散落在其他博客或者在某个旧电脑硬盘，你可能无缘看到。让我想想这一页再加点什么……后续可能加点好看的项目介绍吧</p><p>知乎：</p><p>为了监督自己好好写文章换的真名：<a href="https://www.zhihu.com/people/cheerup/activities" target="_blank" rel="noopener">个人主页</a>（最近动态几乎都是cg相关）</p><p>两个知乎专栏：</p><p>计算机图形学（艰难更新）：<a href="https://zhuanlan.zhihu.com/romance" target="_blank" rel="noopener">风花雪月</a></p><p>计算机视觉（有生之年）：<a href="https://zhuanlan.zhihu.com/justcv" target="_blank" rel="noopener">JustCV</a></p><p>CSDN：</p><p>零碎博文放置处之一：<a href="https://blog.csdn.net/u013611405" target="_blank" rel="noopener">幻想郷こうまかん</a></p><p>QQ：</p><p>一般用来打游戏/交流游戏：406943342</p><p>邮箱：</p><p>会很认真看：<a href="mailto:yhcheer@zju.edu.cn" target="_blank" rel="noopener">yhcheer@zju.edu.cn</a></p><p>赞美生命，热爱生命。</p><p>独立思考，谨言慎行。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;时隔9月，我的博客终于翻新了。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="杂谈" scheme="http://yhcheer.com/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+      <category term="心情" scheme="http://yhcheer.com/tags/%E5%BF%83%E6%83%85/"/>
+    
+  </entry>
   
   <entry>
     <title>【《计算机图形学基础》提炼总结】开篇&amp;导航</title>
@@ -123,28 +145,6 @@
       <category term="光线追踪" scheme="http://yhcheer.com/tags/%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/"/>
     
       <category term="算法" scheme="http://yhcheer.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>故梦</title>
-    <link href="http://yhcheer.com/2018/10/20/hello-world/"/>
-    <id>http://yhcheer.com/2018/10/20/hello-world/</id>
-    <published>2018-10-20T01:48:33.000Z</published>
-    <updated>2019-02-28T14:57:36.413Z</updated>
-    
-    <content type="html"><![CDATA[<p>时隔9月，我的博客终于翻新了。</p><a id="more"></a><p>不知道说什么。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;时隔9月，我的博客终于翻新了。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="杂谈" scheme="http://yhcheer.com/categories/%E6%9D%82%E8%B0%88/"/>
-    
-    
-      <category term="心情" scheme="http://yhcheer.com/tags/%E5%BF%83%E6%83%85/"/>
     
   </entry>
   
