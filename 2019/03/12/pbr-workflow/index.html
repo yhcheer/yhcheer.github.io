@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="yh">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Texture Maps Explained - PBR Workflow">
+  <meta property="og:description" content="">
+  <meta property="og:site_name" content="樱花飘落之时">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yhcheer.com">
+  
+    <link rel="alternate" href="/atom.xml" title="樱花飘落之时" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>樱花飘落之时</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/images/graph-note-01.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Texture Maps Explained - PBR Workflow</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/yhcheer">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:yhcheer@zju.edu.cn">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By yh</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2019-03-12</span>
+            <span class="time">00:19:00</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/CG/">CG</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/计算机图形学/">#计算机图形学</a> <a class="tag" href="/tags/PBR/">#PBR</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>An interesting PBR tutorial video from <a href="https://www.youtube.com/watch?v=PjGCtnEDDeU" target="_blank" rel="noopener">youtube</a>.<br><a id="more"></a></p>
+<h3 id="Base-Color-Albedo-Diffuse-map"><a href="#Base-Color-Albedo-Diffuse-map" class="headerlink" title="Base Color / Albedo / Diffuse map"></a>Base Color / Albedo / Diffuse map</h3><p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/rjcG184Hh8kN1UwfDEZYl*JpsJ7B1Yk47Rcf98VLvb0!/r/dL8AAAAAAAAA&amp;bo=IgS9ASIEvQEDORw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="Base Color Texture"></p>
+<p>Base Color Texture</p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/Fqa8a033FbLVE7sYeUx4QLgCIdYVnKRJFXV179RVU7o!/r/dLYAAAAAAAAA&amp;bo=AATEAQAExAEDORw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1552400122698"> </p>
+<p>In the picture below, the left one has base color texture but the right one hasn’t</p>
+<h3 id="Metallic"><a href="#Metallic" class="headerlink" title="Metallic"></a>Metallic</h3><p><strong>Metallic map is ability of your surface to reflect the image around it.</strong></p>
+<p><strong>so it’s reflecting the environment that may be near it.</strong></p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/fJ.ItDNdENuoY6vrEyHfgVbeez8F.fadUhX4K1MhMss!/r/dLYAAAAAAAAA&amp;bo=LwS8AS8EvAEDGTw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="Metallic Texture"> </p>
+<p>completely black Metallic Texture</p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/v*IXQ4EF9PWG*fOPevkXd3mCiTuCo*SrNsujbDXYnEk!/r/dMAAAAAAAAAA&amp;bo=JwS6AScEugEDORw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1552400261053"></p>
+<p>the left Metallic map is whole black ,so there’s no “metalness” to the surface </p>
+<p>and the right one is completely white , so it’s completely metallic. (In the picture may be a sun in the right hand side.)</p>
+<h3 id="Roughness"><a href="#Roughness" class="headerlink" title="Roughness"></a>Roughness</h3><p><strong>the ability of your surface to reflect or absorb white light.</strong></p>
+<ul>
+<li><ul>
+<li>the more white your map is: the less light it will be bouncing back and it will be absorbing </li>
+</ul>
+</li>
+<li><ul>
+<li>the more dark or black that your texture surface: the more light it will be reflecting and the less that you’ll be taking in</li>
+<li>In a word, <strong>white is rough</strong>, on the contrary, <strong>black is very smooth</strong>.</li>
+</ul>
+</li>
+</ul>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/M5IrSJwTnWMmRZgqs0M23OKsC0SBsdeUxuYJgjLphn8!/r/dMIAAAAAAAAA&amp;bo=EwTBARMEwQEDKQw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="Roughness Texture"> </p>
+<p>Roughness Texture</p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/8zC0t0hM2qOkH8fbNpXTk7p1aCyhKyUE2HNtMJPyTo8!/r/dFQBAAAAAAAA&amp;bo=MwTBATMEwQEDORw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1552402389855"></p>
+<p>In the picture the right one use the Metallic map &amp; roughness map, so it absorb some light. It’s not very metal and it’s not very rough, it’s balanced.</p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/y.cmvjGyk.7KH0q8lwzX13XoRt5XM8RPBJiIwBAzd.c!/r/dDYBAAAAAAAA&amp;bo=LwS*AS8EvwEDORw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1552403800669"></p>
+<p>In extreme situation, very white metallic map + very black roughness map. (the right one)</p>
+<h3 id="Normals"><a href="#Normals" class="headerlink" title="Normals"></a>Normals</h3><p><strong>essentially determines the illusion of depth and features</strong></p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/nFqXOthBhW7lQGbcdISFuSVKK15q*thzZAdi0GNOwrs!/r/dL4AAAAAAAAA&amp;bo=uwWAAjsGuAIDSdc!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1552404220012"> </p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/GQukfeo5Le13*wao9JgbJGciSibBxYq0tLZS9vuC5L4!/r/dLwAAAAAAAAA&amp;bo=yQWAAkQGtQIDSdc!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1552404270070"> </p>
+<p>on the left have Normal Texture map, looks like 3d and have a lot of details. </p>
+<h3 id="Height"><a href="#Height" class="headerlink" title="Height"></a>Height</h3><p><strong>fake depth or essentially height on your map</strong></p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/NupGrt1.74AYPzbKx52N7s*xGXZIk0SLUSaUWT*tYoM!/r/dL4AAAAAAAAA&amp;bo=hgWAAh4GxQIDKdI!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1552404492444"></p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/yUpmsH5IXbvAhnTcMa.9o9RSfmYarrdh6c6oc3YPOaE!/r/dFIBAAAAAAAA&amp;bo=pgWAAi4GvAIDSds!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1552404820506"></p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/XVTorxoFHkzVPe9xJmeAI1k1b0ngkceTfj*HdetRS.0!/r/dDcBAAAAAAAA&amp;bo=mQWAAi8GwwIDSZo!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1552404993149"></p>
+<p>the height map is giving us more depth on the left side of our cube</p>
+<p>the right one has height map</p>
+<h3 id="Ambient-Occlusion"><a href="#Ambient-Occlusion" class="headerlink" title="Ambient Occlusion"></a>Ambient Occlusion</h3><p><strong>determines which areas are inherently darkened to simulate shadows</strong></p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/j5CjXHAZP36DEvdgj37WEpk1mvdN2yP.Pm4XH9klzJY!/r/dFIBAAAAAAAA&amp;bo=rwWAAi4GuAIDOaY!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1552405777944"></p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/FHeDsCpxXgU1COSuSXgaZI*sWZLQCA7hg.mVuQsXnnI!/r/dLYAAAAAAAAA&amp;bo=wAWAAjMGsgIDSa4!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1552406559075"></p>
+<p>left side have AO applied on and we’ve got darker crevices as if there’s shadows there</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        </p><p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
