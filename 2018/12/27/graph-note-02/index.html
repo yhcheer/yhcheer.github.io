@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="yh">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="色彩空间、图像基本知识和Phong光照模型">
+  <meta property="og:description" content="">
+  <meta property="og:site_name" content="樱花飘落之时">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yhcheer.com">
+  
+    <link rel="alternate" href="/atom.xml" title="樱花飘落之时" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>樱花飘落之时</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/images/graph-note-02.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">色彩空间、图像基本知识和Phong光照模型</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/yhcheer">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:yhcheer@zju.edu.cn">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By yh</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2018-12-27</span>
+            <span class="time">02:30:26</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/图形学/">图形学</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/计算机图形学/">#计算机图形学</a> <a class="tag" href="/tags/色彩空间/">#色彩空间</a> <a class="tag" href="/tags/图像基础/">#图像基础</a> <a class="tag" href="/tags/光照模型/">#光照模型</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>这一章主要从<strong>颜色和光的基本概念</strong>，扩展到色彩空间的概念，详细介绍了几个常用的<strong>色彩空间</strong>。然后讲解了一些<strong>图像</strong>的基本知识，最后讲了一些<strong>光照模型</strong>的知识。主要是一些零散的概念，为后面的知识作铺垫。</p>
+<a id="more"></a>
+<p>课程主页：<a href="https://cg.cs.tsinghua.edu.cn/course/resource.htm" target="_blank" rel="noopener">https://cg.cs.tsinghua.edu.cn/course/resource.htm</a></p>
+<p>本系列笔记导航：<a href="http://yhcheer.com/2018/12/21/graph-note/">http://yhcheer.com/2018/12/21/graph-note/</a></p>
+<h2 id="第二讲-颜色模型、图像基本知识、Phong光照模型"><a href="#第二讲-颜色模型、图像基本知识、Phong光照模型" class="headerlink" title="第二讲 颜色模型、图像基本知识、Phong光照模型"></a>第二讲 颜色模型、图像基本知识、Phong光照模型</h2><h3 id="2-1-颜色模型"><a href="#2-1-颜色模型" class="headerlink" title="2.1 颜色模型"></a>2.1 颜色模型</h3><h4 id="2-1-1-光和色彩"><a href="#2-1-1-光和色彩" class="headerlink" title="2.1.1 光和色彩"></a>2.1.1 光和色彩</h4><ul>
+<li>什么是色彩？</li>
+</ul>
+<p><strong>色彩</strong>是对不同波长的光的能量的感知。</p>
+<ul>
+<li>什么是光及光的谱分布？</li>
+</ul>
+<p><strong>光</strong>（Light）：是由不同波长的电磁波按照某种能量分布混合叠加而成。如白光（由所有可见波长的电磁波以相同的强度混合）。</p>
+<p><strong>谱分布</strong>（spectral distribution）：光在各个可见波长分量的强度分布函数。如下图所示的谱分布，各可见波长分布形成一条曲线，最终形成如图下方的紫色。</p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/Qm7*.vX.tq1Wn7LdweKZg98P*vPVzNd4B.rEr1rEA4Q!/r/dDQBAAAAAAAA&amp;bo=tgGWArYBlgIDGTw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1545833706809"></p>
+<p>上述是光的一种表示方法，我们想把颜色也用上述方法来表示，但会出现一个问题，即下面讲到的异谱同色现象。</p>
+<p><strong>异谱同色现象</strong>（different spectrum distribution with the same color）：色彩也可用谱分布函数来表示，但几种不同的谱分布可能会对应产生同一种色彩。</p>
+<p>故提出下面的各种色彩空间的概念。</p>
+<h4 id="2-1-2-色彩空间"><a href="#2-1-2-色彩空间" class="headerlink" title="2.1.2 色彩空间"></a>2.1.2 色彩空间</h4><h5 id="一、RGB色彩空间"><a href="#一、RGB色彩空间" class="headerlink" title="一、RGB色彩空间"></a>一、RGB色彩空间</h5><ul>
+<li>什么是RGB色彩空间，为什么以RGB作为三个基本色彩？</li>
+</ul>
+<p>色彩使用<strong>三通道RGB向量（r,g,b）</strong>表示。对每个通道可以单独操作，可以分别归整化到[0,1]内的浮点数，如果使用8bit进行存储，则通常取[0,255]内的整数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">色彩C = r·R + g·G + b·B</span><br></pre></td></tr></table></figure>
+<p>以RGB作为三个基本色彩，是因为人眼的视网膜中有三种锥状视觉细胞，分别对红绿蓝三种光最为敏感。</p>
+<p><strong>RGB空间的缺点</strong>：有一部分空间是无法显示的。如下图所示，大概500nm左右区域，红色光取值百分比是负数，这与常识不相吻合，我们无法用正线性组合来表示。</p>
+<p>当然，后续有方法改正这个问题。</p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/FKT3x2iQpxkmO.f1UKsQv9BiTK.XgY3icydgUmxAsa0!/r/dLgAAAAAAAAA&amp;bo=kQFIAZEBSAEDGTw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1545835327506"></p>
+<h5 id="二、CMY色彩空间"><a href="#二、CMY色彩空间" class="headerlink" title="二、CMY色彩空间"></a>二、CMY色彩空间</h5><ul>
+<li>什么是CMY色彩空间？</li>
+</ul>
+<p><strong>CMY色彩空间</strong>：基本颜色换成<strong>青</strong>（<strong>C</strong>yan）, <strong>品红</strong>（<strong>M</strong>agenta）和<strong>黄</strong>（<strong>Y</strong>ellow），它们分别是<strong>红绿蓝的补色</strong>。CMY是“<strong>减色系统</strong>”，对应RGB是加色系统，因为像素值越大，颜色越灰暗（趋向黑色），与RGB正好相反。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">C = 1 - R</span><br><span class="line"></span><br><span class="line">M = 1 - G</span><br><span class="line"></span><br><span class="line">Y = 1 - B</span><br></pre></td></tr></table></figure>
+<p><u>应用场景：印刷出版业。</u></p>
+<h5 id="三、HSV色彩空间"><a href="#三、HSV色彩空间" class="headerlink" title="三、HSV色彩空间"></a>三、HSV色彩空间</h5><ul>
+<li>什么是HSV色彩空间？</li>
+</ul>
+<p><strong>HSV色彩空间</strong>：真彩色的颜色总数为16,777,216种（256x256x256），用RGB色彩空间来描述和定位较为困难，故HSV提供了一个直观的方法对色彩进行准确的选择。</p>
+<p><u>应用场景：图象处理、分形图像和光线追踪等，特别是艺术领域。</u></p>
+<p><strong>H</strong>ue（色调/色相）：描述色彩的本征属性，比如是属于那种哪种颜色：红橙黄绿青蓝紫等。</p>
+<p><strong>S</strong>aturation（饱和度/也较叫纯度）：饱和度越低，色彩颜色越白。</p>
+<p><strong>V</strong>alue of brightness（亮度）：亮度越黑，色彩越黑。</p>
+<p>色彩直观显示如下图：</p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/ywqw13DNn40m.4olM2TWPkBYXOmFdEG3j8ltTzJSQBA!/r/dL4AAAAAAAAA&amp;bo=SAEOAUgBDgEDCSw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1545836349793"></p>
+<h5 id="四、XYZ模型色彩空间"><a href="#四、XYZ模型色彩空间" class="headerlink" title="四、XYZ模型色彩空间"></a>四、XYZ模型色彩空间</h5><p><strong>解决RGB色彩空间中负组合系数的问题。</strong></p>
+<ul>
+<li>什么是CIE XYZ色彩空间？</li>
+</ul>
+<p>CIE假定人对色彩的感知是线性的，因此对上面的rgb色域图进行了<strong>线性变换</strong>，将可见光色域变换到正数区域内，改用三个假想的原色X、Y、 Z建立了一个新的色度系统。因此<strong>CIE XYZ色彩空间</strong>可以表示<strong>所有可感知色彩</strong>（解决RGB色彩空间缺陷）。应用场景：多用于色彩科学的研究。</p>
+<p>其中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = X/(X+Y+Z)</span><br><span class="line"></span><br><span class="line">y = Y/(X+Y+Z) </span><br><span class="line"></span><br><span class="line">z = Z/(X+Y+Z) = 1-x-y</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank.svg/300px-CIE1931xy_blank.svg.png" alt="wiki CIE XYZ"></p>
+<p>这里的颜色只是示意,事实上没有设备能完全还上面所有的自然色域。在该图中任意选定两点，两点间直线上的颜色可由这两点的颜色混合成。给定三个点，三点构成的三角形内颜色可由这三个点颜色混合成。</p>
+<h3 id="2-2-图像基本知识"><a href="#2-2-图像基本知识" class="headerlink" title="2.2 图像基本知识"></a>2.2 图像基本知识</h3><p>图形学最重要的两个p：pixel像素和polygon多边形</p>
+<ul>
+<li>什么是三角网格？</li>
+</ul>
+<p><strong>三角网格</strong>由<strong>顶点</strong>和<strong>三角面片</strong>组成。</p>
+<p><strong>顶点</strong>集合 <code>V = (v1, v2, v3 ... vn)</code></p>
+<p><strong>面片</strong>集合<code>F = (f1, f2, f3 ... fn)</code></p>
+<p>其中，每个F中的每个面片fi都是由V中的顶点构成的三角形，如<code>f1 =  (v1, v2, v3)</code>，可以使用顶点的编号进行索引。</p>
+<ul>
+<li>怎么计算<strong>顶点的法向量</strong>？</li>
+</ul>
+<p>可以通过周围的所有三角面片的法向量通过加权叠加计算。</p>
+<p>按算数平均计算：<code>N_v= (N_f1+N_f2+ ... + N_fm)/m</code></p>
+<p>按面积加权平均计算：<code>N_v= (S_f1·N_f1+S_f2·N_f2+ ... + S_fm·N_fm)/(S_f1+S_f2+ ... +S_fm)</code></p>
+<p>按角度加权平均计算：<code>N_v= (Ang_f1·1_fm+Ang_f2·N_f2+ ... + Ang_fm·N_fm)/(Ang_f1+ ... +Ang_fm)</code></p>
+<h3 id="2-3-光照模型"><a href="#2-3-光照模型" class="headerlink" title="2.3 光照模型"></a>2.3 光照模型</h3><p>lighting model 或 illumination model</p>
+<ul>
+<li>局部光照模型和全局光照模型的区别？</li>
+</ul>
+<p><strong>局部光照模型</strong>（Local Lighting）：物体直接受光源影响所产生的光照效果</p>
+<p><strong>全局光照模型</strong>（Global Lighting）：不止考虑直接照明还考虑间接照明，包括阴影、反射、折射等</p>
+<ul>
+<li>光照模型的历史？</li>
+</ul>
+<p>1967年，Wylie第一次在显示物体时，加入光照效果，认为光的强度与物体到光源的距离成反比。</p>
+<p>1970年，Bouknight提出第一个光反射模型。</p>
+<p><strong>Lambert diffuse reflection（漫发射） + ambient (No specular lighting)（环境光）</strong></p>
+<p>1971年，Gourand突出漫反射模型加插值思想。</p>
+<p><strong>Lambert diffuse + Bicentric interpolation</strong></p>
+<p>但这个模型不能解决高光问题。</p>
+<p>1975年，Phong提出第一个有影响的光照模型。</p>
+<p><strong>Diffuse（漫发射）ambient（环境光）+ specular（高光）</strong></p>
+<ul>
+<li>光线传播的能量守恒定律</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">I_i = I_d + I_s + I_t + I_v</span><br><span class="line"></span><br><span class="line">其中，</span><br><span class="line"></span><br><span class="line">I_i入射光的能量</span><br><span class="line"></span><br><span class="line">I_d漫反射（diffuse reflection）光的能量</span><br><span class="line"></span><br><span class="line">I_s镜面反射（specular reflection）光的能量</span><br><span class="line"></span><br><span class="line">I_t折射（refraction）光的能量</span><br><span class="line"></span><br><span class="line">I_v被介质和物体所吸收的能量</span><br></pre></td></tr></table></figure>
+<ul>
+<li>立体角</li>
+</ul>
+<p><strong>立体角</strong>（Solid Angle）：衡量物体相对于某一视点P的视角的大小，最大为4Pi,即整个球。单位sr。</p>
+<blockquote>
+<p>dw = ds / r^2</p>
+</blockquote>
+<ul>
+<li>光通量</li>
+</ul>
+<p><strong>光通量/辐射通量</strong>（Luminous/Radiant Flux）：单位时间内通过面元dS的光能量，记为dF。单位W。</p>
+<ul>
+<li>发光强度</li>
+</ul>
+<p><strong>发光强度/辐射强度</strong>（Radiant Intensity）：单位立体角内的光通量，记为I。单位W/sr。</p>
+<ul>
+<li>光亮度</li>
+</ul>
+<p><strong>光亮度/辐射率</strong>（Radiance）：单位投影面积和单位立体角内的光通量，记为L。单位W/sr·m^2</p>
+<ul>
+<li>辉度</li>
+</ul>
+<p><strong>辉度/辐照度</strong>（Irradiance）：单位时间内单位面积的光通量，记为E。单位W/m^2。</p>
+<ul>
+<li>Phong模型</li>
+</ul>
+<p><strong>Phong模型</strong>支持点光源和方向光源。是局部光照模型，可分为三个部分：漫反射+镜面反射+环境光。</p>
+<p>Phong模型的<strong>几何表达</strong>如下图，其中L是<strong>入射光</strong>，R是<strong>反射光</strong>，N是<strong>法向量</strong>，V是<strong>视点方向</strong>，H是<strong>L和V夹角的角平分线方向</strong>：</p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/av*BmblJYVfKfA5gt1yy.*jlejNBqbh6pnKPSDKwTxg!/r/dLkAAAAAAAAA&amp;bo=5QKwAeUCsAEDCSw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1545880972455"></p>
+<ol>
+<li>漫反射（Diffuse reflection）：</li>
+</ol>
+<p>漫反射光的传播是各向同性的（isotropic）。</p>
+<p><strong>漫反射光强度公式</strong>：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">I_d = I_i * K_d * ( L · <span class="keyword">N</span> )</span><br></pre></td></tr></table></figure>
+<p>其中，Kd是<strong>漫反射系数</strong>，Kd有RGB三个独立的通道，与模型本身色彩相关。I_i是<strong>入射光光强</strong>。</p>
+<p>L · N是点积，表示<strong>入射光与法向量的夹角</strong>越小，则漫反射光越强，反之则越弱。</p>
+<ol start="2">
+<li>镜面反射光（Specular reflection）：</li>
+</ol>
+<p>根据反射定律，反射光往往集中在一个小的立体角内，这些反射光称为镜面反射光。</p>
+<p><strong>镜面反射光强度公式</strong>：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">I_s = I_i * K_s * ( R · V )^n</span><br></pre></td></tr></table></figure>
+<p>其中，Ks是<strong>镜面反射系数</strong>，与物体的表面光滑程度相关。n是<strong>反射指数</strong>，n越大，高光区域越集中。</p>
+<p>R · V是点积，表示<strong>反射光和视点方向的夹角</strong>越小，则镜面反射光越强，反之越弱。</p>
+<ol start="3">
+<li>环境光反射（Ambient reflection）：</li>
+</ol>
+<p><strong>环境光反射光强度公式</strong>：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">I_a = I_i * K_a</span><br></pre></td></tr></table></figure>
+<p>其中，Ka是物体对环境光的反射系数常数。</p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/qk447.l0.ZWNvZ9GAM*c9y8coOtF7jtEnWLWa4aTnVg!/r/dDcBAAAAAAAA&amp;bo=TQPnAU0D5wEDGTw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1545889622242"></p>
+<p>改动系数，体会各系数对模型的影响，如下图所示。</p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/UyrgHoY1Ubacm9VrELU8izPZZlU.uFozE1TuXiWrcZ4!/r/dLsAAAAAAAAA&amp;bo=NAK2ATQCtgEDORw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1545889634936"></p>
+<ul>
+<li>Phong明暗处理和Gouraud明暗处理（Shading）？</li>
+</ul>
+<p>应该是类似顶点着色和片元着色。</p>
+<p><strong>Gouraud Shading</strong>：1971年提出色彩插值，计算模型顶点颜色，然后根据顶点颜色按重心插值（Barycentric Interpolation），赋予色彩。</p>
+<p><strong>Phong Shading</strong>：1973年提出法向插值，计算顶点法向，然后根据顶点法向插值，得到连续的法向量场，然后三角形上每一点都用Phong模型计算色彩。</p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/HecdACxc9Bpz7WifEPMoL6r1c4Zd6sYvfyWp5mBh0wI!/r/dLYAAAAAAAAA&amp;bo=BwPAAQcDwAEDKQw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1545889746636"></p>
+<h3 id="2-4-视点变换和视点方向"><a href="#2-4-视点变换和视点方向" class="headerlink" title="2.4 视点变换和视点方向"></a>2.4 视点变换和视点方向</h3><ul>
+<li>四种简单变换（Simple Transformations）</li>
+</ul>
+<p>Identity(不变) , translation(平移), rotation(旋转) and isotropic scaling(均衡缩放)</p>
+<ul>
+<li>常见的变换有哪些？</li>
+</ul>
+<p>都是由简单变换组合复合起来。</p>
+<p>Rigid-body Transformation (刚体变换)：保持度量（长度、角度、大小）；不变、平移、旋转</p>
+<p>Similarity Transformation(相似变换)：保持角度；不变、平移、旋转、均衡缩放</p>
+<p>Linear Transformation(线性变换)：满足线性方程；不变、旋转、缩放（不只是均衡缩放）、对称、错切</p>
+<p>Affine Transformation(仿射变换)：保持直线平行；线性变换、相似变换</p>
+<p>Projective Transformation(投影变换)：</p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/eTm0iklkUT.Vy.n1Q3a3AC0h76h*FgBwraWb8.DgN9E!/r/dL8AAAAAAAAA&amp;bo=jgPzAY4D8wEDGTw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1545890872169"></p>
+<ul>
+<li>什么是齐次坐标？</li>
+</ul>
+<p><strong>齐次坐标</strong>（homogenous coordinates）的本质是使用四维数组来表示三维空间的点和向量。</p>
+<p>这样让旋转、平移、缩放都能用一个4X4的矩阵来实现。</p>
+<ul>
+<li>怎么保证变换后法向量的正确性？</li>
+</ul>
+<p>变换<strong>切平面</strong>（tangent plane），再通过切平面计算法向量，而不是直接计算。新的法向量n_WS计算方法如下。其中M是变换矩阵。</p>
+<p><img src="//r.photo.store.qq.com/psb?/V10ldIv84XBZXi/05qmf6LS9H8JG*kZgbrLiWl0zJz1MKp*1GtoHyHnqIQ!/r/dFIBAAAAAAAA&amp;bo=bgMFAm4DBQIDCSw!&amp;rf=viewer_4_yake_qzoneimgout.png" alt="1545893136853"></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        </p><p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

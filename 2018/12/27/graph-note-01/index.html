@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="yh">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="计算机图形学简介、历史与现状">
+  <meta property="og:description" content="">
+  <meta property="og:site_name" content="樱花飘落之时">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yhcheer.com">
+  
+    <link rel="alternate" href="/atom.xml" title="樱花飘落之时" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>樱花飘落之时</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/images/graph-note-01.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">计算机图形学简介、历史与现状</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/yhcheer">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:yhcheer@zju.edu.cn">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By yh</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2018-12-27</span>
+            <span class="time">02:30:26</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/图形学/">图形学</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/计算机图形学/">#计算机图形学</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>第一章主要讲解了<strong>计算机图形学的基本概念</strong>，包括定义以及和另一些相近研究方向的区别，并详细讲解了计算机图形学的<strong>历史与发展进程</strong>，最后展示了<strong>最新的图形学研究成果</strong>。作为绪论的一章，重在引起大家的兴趣。因为对CG这一块整体还不熟悉，这一章的笔记是比较粗糙的，后续可能改进。</p>
+<a id="more"></a>
+<p>课程主页：<a href="https://cg.cs.tsinghua.edu.cn/course/resource.htm" target="_blank" rel="noopener">https://cg.cs.tsinghua.edu.cn/course/resource.htm</a></p>
+<p>本系列笔记导航：<a href="http://yhcheer.com/2018/12/21/graph-note/">http://yhcheer.com/2018/12/21/graph-note/</a></p>
+<h2 id="第一讲-图形学简介"><a href="#第一讲-图形学简介" class="headerlink" title="第一讲 图形学简介"></a>第一讲 图形学简介</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li>什么是计算机图形学？</li>
+</ul>
+<p><strong>计算机图形学</strong>是利用计算机研究图形的表示、生成、处理、显示的学科。</p>
+<p>Computer Graphics is a subject to investigate graphics representation, generation, processing and display by using Computers.</p>
+<ul>
+<li>图形和图像的区别？</li>
+</ul>
+<p><strong>图像</strong>（Image）：计算机内以位图（Bitmap）形式存在的灰度信息。</p>
+<p><strong>图形</strong>（Graph）：场景的几何模型+景物的物理属性，如模型本身+颜色+光照属性+反射率等。主要分为基于线条表示的图形和明暗图（Shading）。</p>
+<ul>
+<li>计算机图形学和CAD的历史？</li>
+</ul>
+<p>In 1962, MIT’s Lincoln Lab, Ivan Sutherland’s PhD Thesis  Sketchpad: <strong><em>A Man-Machined Graphical Communication System</em></strong></p>
+<p>Professor Coons, the concept of “<strong>CAD</strong>” (Computer Aided Design) in 1958, Coons surface in 1964, Coons Award</p>
+<ul>
+<li>计算机图形学与模式识别、计算机视觉、数字图像处理的关系？</li>
+</ul>
+<p><strong>计算机图形学</strong>（Computer Graphics）输入的是对虚拟场景的描述，通常为多边形数组，而每个多边形由各个顶点组成，每个顶点包括三维坐标、贴图坐标、rgb颜色等。输出的是图像，即二维像素数组。</p>
+<p><strong>模式识别</strong>（Pattern Recognition）的重点在于识别和理解的过程，指计算机图形学进行识别和分辨的描述，是从图形到描述的表达过程，其本质是分类。</p>
+<p><strong>计算机视觉</strong>（Computer Vision）输入的是图像，通常来自相机。输出的是对于图像对应的真实世界的理解，比如检测人脸、识别车牌。计算机图形学与计算机视觉是互逆问题。</p>
+<p><strong>数字图像处理</strong>（Digital Image Processing）输入的是图像，输出的也是图像，对已有的图像进行变换、分析、重构。</p>
+<h3 id="经典的真实感图形学"><a href="#经典的真实感图形学" class="headerlink" title="经典的真实感图形学"></a>经典的真实感图形学</h3><p>即1990年之前的图形学</p>
+<h4 id="光照模型"><a href="#光照模型" class="headerlink" title="光照模型"></a>光照模型</h4><ul>
+<li>简单光照模型 = Phong模型</li>
+<li>局部光照模型 = Cook Torrance模型</li>
+<li>整体光照模型 = watty？模型</li>
+</ul>
+<h4 id="绘制方法"><a href="#绘制方法" class="headerlink" title="绘制方法"></a>绘制方法</h4><ul>
+<li>光线追踪</li>
+<li>辐射度</li>
+</ul>
+<h4 id="加速算法及其他"><a href="#加速算法及其他" class="headerlink" title="加速算法及其他"></a>加速算法及其他</h4><ul>
+<li>包围体树、自适应八叉树等</li>
+<li>阴影算法、纹理和成</li>
+</ul>
+<p>如今清华的一些研究</p>
+<ul>
+<li>与计算的全局光照实时绘制</li>
+<li>表面细节绘制与体纹理</li>
+<li>头发的交互绘制与编辑</li>
+</ul>
+<h3 id="几何造型与几何处理"><a href="#几何造型与几何处理" class="headerlink" title="几何造型与几何处理"></a>几何造型与几何处理</h3><h4 id="几何造型"><a href="#几何造型" class="headerlink" title="几何造型"></a>几何造型</h4><ul>
+<li>几何造型研究利用计算机表示、构建三维几何模型<ul>
+<li>曲线曲面造型<ul>
+<li>Bezier方法、B样条方法、NURBS方法</li>
+</ul>
+</li>
+<li>实体造型<ul>
+<li>边界表示模型</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="几何处理"><a href="#几何处理" class="headerlink" title="几何处理"></a>几何处理</h4><ul>
+<li>几何处理侧重对已有的模型进行处理，使之满足用户要求<ul>
+<li>简化</li>
+<li>参数化</li>
+<li>分割</li>
+<li>特征提取</li>
+<li>几何变形</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        </p><p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
