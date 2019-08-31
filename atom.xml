@@ -130,9 +130,9 @@
     
       <category term="计算机图形学" scheme="http://yhcheer.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
     
-      <category term="光照模型" scheme="http://yhcheer.com/tags/%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B/"/>
-    
       <category term="BRDF" scheme="http://yhcheer.com/tags/BRDF/"/>
+    
+      <category term="光照模型" scheme="http://yhcheer.com/tags/%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B/"/>
     
   </entry>
   
@@ -156,11 +156,11 @@
     
       <category term="计算机图形学" scheme="http://yhcheer.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
     
+      <category term="光照模型" scheme="http://yhcheer.com/tags/%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B/"/>
+    
       <category term="色彩空间" scheme="http://yhcheer.com/tags/%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/"/>
     
       <category term="图像基础" scheme="http://yhcheer.com/tags/%E5%9B%BE%E5%83%8F%E5%9F%BA%E7%A1%80/"/>
-    
-      <category term="光照模型" scheme="http://yhcheer.com/tags/%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B/"/>
     
   </entry>
   
@@ -288,9 +288,9 @@
     
       <category term="计算机图形学" scheme="http://yhcheer.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
     
-      <category term="Java" scheme="http://yhcheer.com/tags/Java/"/>
-    
       <category term="算法" scheme="http://yhcheer.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://yhcheer.com/tags/Java/"/>
     
       <category term="光线追踪" scheme="http://yhcheer.com/tags/%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/"/>
     
