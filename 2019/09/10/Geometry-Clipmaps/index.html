@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-09-10</span>
-            <span class="time">23:36:05</span>
+            <span class="time">23:37:44</span>
           </span>
           
           <!--  Categories  -->
@@ -124,7 +124,7 @@
         <div class="post-content">
           <p>来自GPU Gems 2的一篇讲地形渲染技术的paper，使用一种叫Geometry Clipmaps的技术，并用GPU实现。</p>
 <a id="more"></a>
-<p>Geometry clipmap是用于渲染地形LOD的新方法。</p>
+<h1 id="Terrain-Rendering-Using-GPU-Based-Geometry-Clipmaps"><a href="#Terrain-Rendering-Using-GPU-Based-Geometry-Clipmaps" class="headerlink" title="Terrain Rendering Using GPU-Based Geometry Clipmaps"></a>Terrain Rendering Using GPU-Based Geometry Clipmaps</h1><p>Geometry clipmap是用于渲染地形LOD的新方法。</p>
 <p>它把地形缓存在一组嵌套的规则网格中，同时在观察点移动时，不断更新这些数据。</p>
 <p>和之前不规则网格（irregular-mesh）技术相比，规则的网格有很多<strong>优点</strong>：简洁的数据结构、平滑的视觉效果，稳定的渲染速率，合适的分级（graceful degradation），高效的压缩，以及运行时的细节合成（synthesis）。</p>
 <p>这里，我们将描述一种通过顶点纹理（vertex texture）实现的Geometry Clipmaps。</p>
